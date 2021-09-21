@@ -1,49 +1,37 @@
 [#requirements-and-recommendations]
 = Requirements and recommendations
 
-Before you install {product-title}, review the following system configuration requirements and settings:
+Before you install Multicluster Engine for Kubernetes 1.0, review the following system configuration requirements and settings:
 
 * <<supported-operating-systems-and-platforms,Supported operating systems and platforms>>
-* <<supported-browsers,Supported browsers>>
 * <<network-configuration,Network configuration>>
 
+*Note:* There is no console for the Technical Preview version of this product.
+
 [#supported-operating-systems-and-platforms]
-== Supported operating systems and platforms
+== Supported operating systems and platforms for hub clusters and managed clusters
 
 See the following table for supported operating systems:
 
 |===
-| Platform | Operating system | {ocp} version
-
-| Linux x86_64
-| Red Hat Enterprise Linux 7.6 (or later), or CoreOS
-| Refer to the https://access.redhat.com/articles/5900521[{product-title-short} {product-version} Support matrix] for the most current list of supported {ocp-short} platforms.
+| Platform | Supported for hub cluster| Supported for managed cluster
+| Red Hat OpenShift Container Platform 3.11.200, and later 3.11.x releases| No | Yes
+| Red Hat OpenShift Container Platform 4.8.2, and later| Yes | Yes
+| Red Hat OpenShift Container Platform on Amazon Web Services| Yes | Yes
+| Red Hat OpenShift Container Platform on Microsoft Azure| Yes | Yes
+| Red Hat OpenShift Container Platform on Google Cloud Platform| Yes | Yes
+| Red Hat OpenShift Kubernetes Engine| No | Yes
+| Google Kubernetes Engine (Google GKE) (Kubernetes 1.17, and later)| No | Yes
+| Amazon Elastic Kubernetes Service (Amazon EKS) (Kubernetes 1.17.6, and later)| No | Yes
+| Microsoft Azure Kubernetes Service (Microsoft AKS) (Kubernetes 1.19.6, and later)| No | Yes
 |===
-
-[#supported-browsers]
-== Supported browsers
-
-You can access the {product-title-short} console from Mozilla Firefox, Google Chrome, Microsoft Edge, and Safari.
-See the following versions that are tested and supported:
-
-|===
-| Platform | Supported browsers
-
-| Microsoft Windows
-| Microsoft Edge - 44 or later, Mozilla Firefox - 82.0 or later, Google Chrome - Version 86.0 and later
-
-| Linux
-| Mozilla Firefox - 82.0 and later, Google Chrome - Version 86.0 and later
-
-| macOS
-| Mozilla Firefox - 82.0 and later, Google Chrome - Version 86.0 and later, Safari - 14.0 and later
-|===
-
 
 [#network-configuration]
 == Network configuration
 
-Configure your network settings to allow the connections in the following sections.
+Configure your network settings to allow the connections in the following sections:
+
+//Do we have anything here for this section
 
 [#network-configuration-hub]
 === Hub cluster networking requirements
@@ -93,42 +81,8 @@ For the managed cluster networking requirements, see the following table:
 
 | Outbound
 | The managed cluster to the channel source, which includes GitHub, Object Store, and Helm repository. This is only required when you are using application lifecycle to connect to these sources.
-| 
-
-| Inbound
-| The `WorkManager` service endpoint from the hub cluster
-| 443
 
 |===
 
-[#network-configuration-submariner]
-=== Submariner networking requirements
 
-Clusters that are using Submariner require three open ports. The following table shows which ports you might use:
 
-|===
-| Direction | Connection | Port (if specified)
-
-| Outbound and inbound
-| Each of the managed clusters
-| 4800/UDP
-
-| Outbound and inbound
-| Each of the managed clusters
-| 4500/UDP, 500/UDP, and any other ports that are used for IPSec traffic on the gateway nodes
-
-| Inbound
-| Each of the managed clusters
-| 8080/TCP
-
-|===
-
-[#network-configuration-app-deploy]
-=== Application deployment network requirements
-
-In general, the application deployment communication is one way from a managed cluster to the hub cluster. The connection uses `kubeconfig`, which is configured by the agent on the managed cluster. The application deployment on the managed cluster needs to access the following namespaces on the hub cluster:
-
-* The namespace of the channel resource
-* The namespace of the managed cluster
-
-See the https://access.redhat.com/articles/5900521[{product-title} {product-version} Support matrix] for additional information.

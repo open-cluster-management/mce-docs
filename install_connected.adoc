@@ -12,9 +12,9 @@
 [#connect-prerequisites]
 == Prerequisites
 
-Before you install {product-title-short}, see the following requirements:
+Before you install Multicluster Engine for Kubernetes 1.0, see the following requirements:
 
-* Your {ocp} must have access to the {product-title-short} operator in the OperatorHub catalog from the console. 
+* Your {ocp} must have access to the operator in the OperatorHub catalog from the console. 
 
 * You need access to the https://catalog.redhat.com/software/containers/search?p=1&application_categories_list=Container%20Platform%20%2F%20Management[catalog.redhat.com].
 

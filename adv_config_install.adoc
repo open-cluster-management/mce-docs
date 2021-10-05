@@ -1,0 +1,53 @@
+[#advanced-config-engine]
+= MultiClusterEngine advanced configuration 
+
+TODO
+
+{product-title} is installed using an operator that deploys all of the required components and you can configure certain components and services in the engine.
+ Give the field name, what kind of input it takes, and what affect it has on the installation.
+
+[#customize-ingress]
+== Customize {ocp-short} default ingress CA certificate
+
+- Field name:
+
+- Input:
+
+- Action:
+
+[#disable-import]
+== Disable automatic import of the hub cluster as a managed cluster
+
+- Field name:
+
+- Input:
+
+- Action
+
+[#disable-update]
+== Disable automatic update of ClusterImageSets
+
+- Field name:
+
+- Input:
+
+- Action:
+
+[#disable-update]
+== Disable automatic update of ClusterImageSets
+
+- Field name:
+
+- Input:
+
+- Action:
+
+[#enable-proxy]
+== Enable cluster proxy addon
+
+- Field name:
+
+- Input:
+
+- Action:
+	

@@ -80,7 +80,7 @@ You can procede to install {product-title-short}.
 
 **Best practice:** From the _Administrator_ view in your {ocp-short} navigation, install the OperatorHub web console interface that is provided with {ocp-short}.
 
-. Select *Operators* > *OperatorHub* to access the list of available operators, and select _Multicluster Engine_ operator.
+. Select *Operators* > *OperatorHub* to access the list of available operators, and select _multicluster engine for Kubernetes_ operator.
 
 . On the _Operator subscription_ page, select the options for your installation:
 
@@ -109,8 +109,8 @@ You can procede to install {product-title-short}.
 . Select *Install* to apply your changes and create the operator. 
 
 . Create the _MultiClusterEngine_ custom resource.
- .. In the {ocp-short} console navigation, select *Installed Operators* > *Multicluster Engine*.
- .. Select the *MultiClusterEngine* tab.
+ .. In the {ocp-short} console navigation, select *Installed Operators* > *multicluster engine for Kubernetes*.
+ .. Select the *Multiclusterengine* tab.
  .. Select *Create MultiClusterEngine*.
  .. Update the default values in the YAML file. See options in the _MultiClusterEngine advanced configuration_ section of the documentation.
  

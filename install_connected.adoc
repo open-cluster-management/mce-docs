@@ -73,7 +73,7 @@ console   https   reencrypt/Redirect     None
 
 . Open the URL in your browser and check the result. If the console URL displays `console-openshift-console.router.default.svc.cluster.local`, set the value for `openshift_master_default_subdomain` when you install {ocp-short}. See the following example of a URL: `https://console-openshift-console.apps.new-coral.purple-chesterfield.com`.
 
-You can procede to install {product-title-short}.
+You can proceed to install {product-title-short}.
 
 [#installing-from-the-operatorhub]
 == Installing from the OperatorHub web console interface
@@ -188,7 +188,7 @@ metadata:
 spec:
   sourceNamespace: openshift-marketplace
   source: redhat-operators
-  channel: release-2.3
+  channel: release-1.0
   installPlanApproval: Automatic
   name: multicluster-engine
 ----
@@ -236,17 +236,11 @@ If this step fails with the following error, the resources are still being creat
 error: unable to recognize "./mce.yaml": no matches for kind "MultiClusterEngine" in version "operator.multicluster-engine.io/v1"
 ----
 
-. Run the following command to get the custom resource. It can take up to 10 minutes for the `MultiClusterEngine` custom resource status to display as `Running` in the `status.phase` field after you run the following command:
+. Run the following command to get the custom resource. It can take up to 10 minutes for the `MultiClusterEngine` custom resource status to display as `Available` in the `status.phase` field after you run the following command:
 
 +
 ----
 oc get mce -o=jsonpath='{.items[0].status.phase}'
-----
-
-. After the status is `Running`, view the list of routes to find your route:
-+
-----
-oc get routes
 ----
 
 If you are reinstalling {product-title-short} and the pods do not start, see link:../troubleshooting/trouble_reinstall.adoc#troubleshooting-reinstallation-failure[Troubleshooting reinstallation failure] for steps to work around this problem.
@@ -254,8 +248,6 @@ If you are reinstalling {product-title-short} and the pods do not start, see lin
 *Notes:*
 
 - A `ServiceAccount` with a `ClusterRoleBinding` automatically gives cluster administrator privileges to {product-title-short} and to any user credentials with access to the namespace where you install {product-title-short}.
-
-- The installation also creates a namespace called `local-cluster` that is reserved for the {product-title-short} engine when it is managed by itself. There cannot be an existing namespace called `local-cluster`. For security reasons, do not release access to the `local-cluster` namespace to any user who does not already have `cluster-administrator` access.
 
 [#installing-on-infra-node]
 == Installing the {product-title-short} engine on infrastructure nodes

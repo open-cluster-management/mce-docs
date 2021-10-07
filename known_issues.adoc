@@ -1,0 +1,267 @@
+[#known-issues]
+= Known issues
+
+////
+Please follow this format:
+
+Title of known issue, be sure to match header and make title, header unique
+
+Hidden comment: Release: #issue
+Known issue with workaround if:
+
+- Doesn't work the way it should
+- Straightforward to describe
+- Good to know before getting started
+- Quick workaround, of any
+- Applies to most, if not all, users
+- Something that is likely to be fixed next release (never preannounce)
+
+Or consider a troubleshooting topic.
+////
+
+Review the known issues for {product-title}. The following list contains known issues for this release, or known issues that continued from the previous release. For your {ocp} cluster, see https://docs.openshift.com/container-platform/4.3/release_notes/ocp-4-3-release-notes.html#ocp-4-3-known-issues[{ocp-short} known issues].
+
+* <<installation-known-issues,Installation known issues>>
+* <<web-console-known-issues,Web console known issues>>
+** <<observability-known-issues,Observability known issues>>
+* <<cluster-management-issues,Cluster management known issues>>
+* <<application-management-known-issues,Application management known issues>>
+* <<governance-known-issues,Governance known issues>>
+
+[#installation-known-issues]
+== Installation known issues
+
+[#openshift-container-platform-cluster-upgrade-failed-status]
+=== OpenShift Container Platform cluster upgrade failed status
+// 2.0.0:3442
+
+When an {ocp-short} cluster is in the upgrade stage, the cluster pods are restarted and the cluster might remain in `upgrade failed` status for a variation of 1-5 minutes. This behavior is expected and resolves after a few minutes.
+
+[#cluster-management-issues]
+== Cluster management known issues
+
+[#no-delete-cluster-namespace-before-remove-cluster]
+=== Cannot delete managed cluster namespace manually
+//2.3:13474
+
+You cannot delete the namespace of a managed cluster manually. The managed cluster namespace is automatically deleted after the managed cluster is detached. If you delete the managed cluster namespace manually before the managed cluster is detached, the managed cluster shows a continuous terminating  status after you delete the managed cluster. To delete this terminating managed cluster, manually remove the finalizers from the managed cluster that you detached.
+
+[#edit-ns-can-destroy-clusters-through-pools]
+=== Users with edit permission to namespace can destroy clusters by destroying a cluster pool
+//2.3:14531
+
+Users with {product-title-short} permissions of `Edit` to a namespace generally cannot destroy a managed cluster on that namespace. A user with `Edit` permissions can destroy a cluster by destroying a cluster pool that contains that cluster, which destroys all of the clusters in the cluster pool. 
+
+[#no-create-clusters-across-architectures]
+=== Cannot create clusters across architectures
+//2.2.3:14631
+
+You cannot create a managed cluster on a different architecture than the architecture of the engine without creating a release image (`ClusterImageSet`) that contains files for both architectures. For example, you cannot create an `x86_64` cluster from a `ppc64le` engine. The cluster creation fails because the {ocp-short} release registry does not provide a multi-architecture image manifest. 
+
+To work around this issue, complete the following steps:
+
+. From the https://quay.io/repository/openshift-release-dev/ocp-release[{ocp-short} release registry], create a https://docs.docker.com/registry/spec/manifest-v2-2/[manifest list] that includes both `x86_64` and `ppc64le` release images.
+
+.. Pull the manifest lists for both architectures from the Quay repository:
++
+----
+$ podman pull quay.io/openshift-release-dev/ocp-release:4.8.1-x86_64
+$ podman pull quay.io/openshift-release-dev/ocp-release:4.8.1-ppc64le
+----
+
+.. Log in to your private repository where you maintain your images:
++
+----
+$ podman login <private-repo>
+----
++
+Replace `private-repo` with the path to your repository.
+
+.. Add the release image manifest to your private repository by running the following commands:
++
+----
+$ podman push quay.io/openshift-release-dev/ocp-release:4.8.1-x86_64 <private-repo>/ocp-release:4.8.1-x86_64
+$ podman push quay.io/openshift-release-dev/ocp-release:4.8.1-ppc64le <private-repo>/ocp-release:4.8.1-ppc64le
+----
++
+Replace `private-repo` with the path to your repository.
+
+.. Create a manifest for the new information:
++
+---- 
+$ podman manifest create mymanifest
+----
+
+.. Add references to both release images to the manifest list:
++
+----
+$ podman manifest add mymanifest <private-repo>/ocp-release:4.8.1-x86_64
+$ podman manifest add mymanifest <private-repo>/ocp-release:4.8.1-ppc64le
+----
++
+Replace `private-repo` with the path to your repository.
+
+.. Merge the list in your manifest list with the existing manifest:
++
+----
+$ podman manifest push mymanifest docker://<private-repo>/ocp-release:4.8.1
+----
++
+Replace `private-repo` with the path to your repository.
+
+. On the engine, create a release image that references the manifest in your repository.
+
+.. Create a `YAML` file that contains information that is similar to the following example:
++
+----
+apiVersion: hive.openshift.io/v1
+kind: ClusterImageSet
+metadata:
+  labels:
+    channel: fast
+    visible: "true"
+  name: img4.8.1-appsub
+spec:
+  releaseImage: <private-repo>/ocp-release:4.8.1
+----
++
+Replace `private-repo` with the path to your repository.
+
+.. Run the following command on your engine to apply the changes:
++
+----
+oc apply -f <file-name>.yaml
+----
++
+Replace `file-name` with the name of the `YAML` file that you just created. 
+
+. Select the new release image when you create your {ocp-short} cluster. 
+
+The creation process uses the merged release images to create the cluster.  
+
+[#no-reassign-cluster-label]
+=== Cannot reassign a cluster to cluster set by changing label
+//2.2.3:14408
+
+You cannot reassign a cluster or cluster set from one cluster set to another by updating the label for the cluster to the new cluster set. To move a cluster or cluster set to another one, remove it from the cluster set by using the {product-title-short} console. After you remove it from the cluster set, add it to the new cluster set by using the console. 
+
+[#no-ansible-power-hub]
+=== Cannot use Ansible Tower integration with an IBM Power engine
+// 2.3:13523
+
+You cannot use the Ansible Tower integration when the {product-title} engine is running on IBM Power because the link:https://catalog.redhat.com/software/containers/ansible-automation-platform/platform-resource-rhel7-operator/5f6a0f22592d9a52663ccab6[Ansible Automation Platform Resource Operator] does not provide `ppc64le` images.
+
+
+[#no-create-bm-47]
+=== Cannot create bare metal managed clusters on {ocp-short} version 4.8
+// 2.2:10581
+
+You cannot create bare metal managed clusters by using the {product-title-short} engine when the engine is hosted on {ocp-short} version 4.8.
+
+
+----
+Error occurred while retrieving clusters info. Not found.
+----
+
+Wait until the namespace automatically gets removed, which takes 5-10 minutes after you detach the cluster. Or, if the namespace is stuck in a terminating state, you need to manually delete the namespace. Return to the page to see if the error resolved.
+
+[#hub-managed-clusters-clock]
+=== engine and managed clusters clock not synced
+// 2.1:5636
+
+Engine and manage cluster time might become out-of-sync, displaying in the console `unknown` and eventually `available` within a few minutes. Ensure that the {ocp} engine time is configured correctly. See https://docs.openshift.com/container-platform/4.6/installing/install_config/installing-customizing.html[Customizing nodes].
+
+[#importing-certain-versions-of-ibm-red-hat-openshift-kubernetes-service-clusters-is-not-supported]
+=== Importing certain versions of IBM {ocp-short} Kubernetes Service clusters is not supported
+// 1.0.0:2179
+
+You cannot import IBM {ocp-short} Kubernetes Service version 3.11 clusters.
+Later versions of IBM OpenShift Kubernetes Service are supported.
+
+[#detaching-openshift-container-platform-3.11-does-not-remove-the-open-cluster-management-agent]
+=== Detaching {ocp-short} 3.11 does not remove the _open-cluster-management-agent_
+// 2.0.0:3847
+
+When you detach managed clusters on {ocp-short} 3.11, the `open-cluster-management-agent` namespace is not automatically deleted. Manually remove the namespace by running the following command:
+
+----
+oc delete ns open-cluster-management-agent
+----
+
+[#automatic-secret-updates-for-provisioned-clusters-is-not-supported]
+=== Automatic secret updates for provisioned clusters is not supported
+// 2.0.0:3702
+
+When you change your cloud provider access key, the provisioned cluster access key is not updated in the namespace. This is required when your credentials expire on the cloud provider where the managed cluster is hosted and you try delete the managed cluster. If something like this occurs, run the following command for your cloud provider to update the access key: 
+
+* Amazon Web Services (AWS)
+
++
+----
+oc patch secret {CLUSTER-NAME}-aws-creds -n {CLUSTER-NAME} --type json -p='[{"op": "add", "path": "/stringData", "value":{"aws_access_key_id": "{YOUR-NEW-ACCESS-KEY-ID}","aws_secret_access_key":"{YOUR-NEW-aws_secret_access_key}"} }]'
+----
+
+* Google Cloud Platform (GCP)
+
++
+You can identify this issue by a repeating log error message that reads, `Invalid JWT Signature` when you attempt to destroy the cluster. If your log contains this message, obtain a new Google Cloud Provider service account JSON key and enter the following command:
+
++
+----
+oc set data secret/<CLUSTER-NAME>-gcp-creds -n <CLUSTER-NAME> --from-file=osServiceAccount.json=$HOME/.gcp/osServiceAccount.json
+----
++
+Replace `_CLUSTER-NAME_` with the name of your cluster.
++
+Replace the path to the file `$HOME/.gcp/osServiceAccount.json` with the path to the file that contains your new Google Cloud Provider service account JSON key. 
+
+
+* Microsoft Azure 
+
++
+----
+oc set data secret/{CLUSTER-NAME}-azure-creds -n {CLUSTER-NAME} --from-file=osServiceAccount.json=$HOME/.azure/osServiceAccount.json
+----
+
+* VMware vSphere
+
++
+----
+oc patch secret {CLUSTER-NAME}-vsphere-creds -n {CLUSTER-NAME} --type json -p='[{"op": "add", "path": "/stringData", "value":{"username": "{YOUR-NEW-VMware-username}","password":"{YOUR-NEW-VMware-password}"} }]'
+----
+
+[#cluster-might-not-be-destroyed]
+=== Process to destroy a cluster does not complete
+// 2.1.0:4748
+
+When you destroy a managed cluster, the status continues to display `Destroying` after one hour, and the cluster is not destroyed. To resolve this issue complete the following steps:
+
+. Manually ensure that there are no orphaned resources on your cloud, and that all of the provider resources that are associated with the managed cluster are cleaned up.
+
+. Open the `ClusterDeployment` information for the managed cluster that is being removed by entering the following command:
++
+----
+oc edit clusterdeployment/<mycluster> -n <namespace>
+----
++
+Replace `_mycluster_` with the name of the managed cluster that you are destroying.
++
+Replace `_namespace_` with the namespace of the managed cluster.
+
+. Remove the `hive.openshift.io/deprovision` finalizer to forcefully stop the process that is trying to clean up the cluster resources in the cloud.
+
+. Save your changes and verify that `ClusterDeployment` is gone.
+
+. Manually remove the namespace of the managed cluster by running the following command:
++
+----
+oc delete ns <namespace>
+----
++
+Replace `_namespace_` with the namespace of the managed cluster.
+
+
+[#argo-not-supported-power]
+=== Argo CD is not supported with IBM Power engine
+// 2.3:13524
+The link:https://argo-cd.readthedocs.io/en/stable/[Argo CD] integration with {product-title-short} does not work on a {product-title-short} engine that is running on IBM Power because there are no available `ppc64le` images.

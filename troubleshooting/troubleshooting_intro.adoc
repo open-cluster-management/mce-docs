@@ -1,0 +1,36 @@
+[#troubleshooting]
+= Troubleshooting
+
+Before using the Troubleshooting guide, you can run the `oc adm must-gather` command to gather details, logs, and take steps in debugging issues. For more details, see xref:../troubleshooting/must_gather.adoc#running-the-must-gather-command-to-troubleshoot[Running the must-gather command to troubleshoot].
+
+Additionally, check your role-based access. See link:../access_control/rbac.adoc#role-based-access-control[Role-based access control] for details.
+
+[#documented-troubleshooting]
+== Documented troubleshooting
+
+View the list of troubleshooting topics for {product-title}:
+
+*Installation*
+
+To get to the original installing tasks, view link:../install/install_overview.adoc[Installing].
+
+ ** xref:../troubleshooting/trouble_reinstall.adoc#troubleshooting-reinstallation-failure[Troubleshooting reinstallation failure]
+
+*Cluster management*
+
+To get to the original cluster management tasks, view link:../clusters/intro.adoc[Managing your clusters].
+
+ ** xref:../troubleshooting/trouble_cluster_offline.adoc#troubleshooting-an-offline-cluster[Troubleshooting an offline cluster]
+ ** xref:../troubleshooting/trouble_import_status.adoc#troubleshooting-cluster-with-pending-import-status[Troubleshooting cluster with pending import status]
+ ** xref:../troubleshooting/trouble_cluster_offline_cert.adoc#troubleshooting-imported-clusters-offline-after-certificate-change[Troubleshooting imported clusters offline after certificate change]
+ ** xref:../troubleshooting/trouble_cluster_offline_avail.adoc#troubleshooting-cluster-status-offline-available[Troubleshooting cluster status changing from offline to available]
+ ** xref:../troubleshooting/trouble_vm_cluster.adoc#troubleshooting-cluster-creation-on-vmware-vsphere[Troubleshooting cluster creation on VMware vSphere]
+ ** xref:../troubleshooting/trouble_console_status.adoc#troubleshooting-cluster-in-console-with-pending-or-failed-status[Troubleshooting cluster in console with pending or failed status] 
+ ** xref:../troubleshooting/trouble_cluster_import_kubectl.adoc#troubleshooting-ocp-311-cluster-import-failure[Troubleshooting OpenShift Container Platform version 3.11 cluster import failure]
+ ** xref:../troubleshooting/trouble_klusterlet_degraded.adoc#troubleshooting-klusterlet-with-degraded-conditions[Troubleshooting Klusterlet with degraded conditions]
+ ** xref:../troubleshooting/trouble_klusterlet_addon.adoc#troubleshooting-klusterlet-addon[Troubleshooting Klusterlet application manager on managed clusters]
+ ** xref:../troubleshooting/trouble_object_store.adoc#object-storage-channel-secret[Troubleshooting Object storage channel secret]
+ ** xref:../troubleshooting/trouble_obs_label.adoc#observability-undesired-label-in-managedcluster[Troubleshooting managedcluster resource]
+ ** xref:../troubleshooting/trouble_cluster_remove_namespace.adoc#trouble-cluster-remove-namespace[Namespace remains after deleting a cluster]
+ ** xref:../troubleshooting/trouble_auto_import_secret_exists.adoc#trouble-auto-import-secret-exists[Auto-import-secret-exists error when importing a cluster]
+

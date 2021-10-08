@@ -1,6 +1,8 @@
 [#maintaining-a-custom-list-of-release-images-while-disconnected]
 = Maintaining a custom list of release images while disconnected
 
+NW THIS NEEDS REWRITTEN, NO CONSOLE TO USE
+
 In some cases, you need to maintain a custom list of release images when the engine has no Internet connection.
 You can create your own custom list of release images that are available when creating a cluster.
 Complete the following steps to manage your available release images while disconnected:

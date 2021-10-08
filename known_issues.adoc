@@ -22,11 +22,7 @@ Or consider a troubleshooting topic.
 Review the known issues for {product-title}. The following list contains known issues for this release, or known issues that continued from the previous release. For your {ocp} cluster, see https://docs.openshift.com/container-platform/4.3/release_notes/ocp-4-3-release-notes.html#ocp-4-3-known-issues[{ocp-short} known issues].
 
 * <<installation-known-issues,Installation known issues>>
-* <<web-console-known-issues,Web console known issues>>
-** <<observability-known-issues,Observability known issues>>
 * <<cluster-management-issues,Cluster management known issues>>
-* <<application-management-known-issues,Application management known issues>>
-* <<governance-known-issues,Governance known issues>>
 
 [#installation-known-issues]
 == Installation known issues
@@ -141,6 +137,8 @@ The creation process uses the merged release images to create the cluster.
 
 [#no-reassign-cluster-label]
 === Cannot reassign a cluster to cluster set by changing label
+
+NW IS THIS POSSILE W/O CONSOLE? 
 //2.2.3:14408
 
 You cannot reassign a cluster or cluster set from one cluster set to another by updating the label for the cluster to the new cluster set. To move a cluster or cluster set to another one, remove it from the cluster set by using the {product-title-short} console. After you remove it from the cluster set, add it to the new cluster set by using the console. 
@@ -168,15 +166,10 @@ Wait until the namespace automatically gets removed, which takes 5-10 minutes af
 [#hub-managed-clusters-clock]
 === engine and managed clusters clock not synced
 // 2.1:5636
+NW HOW TO DO THIS W/ CLI
 
-Engine and manage cluster time might become out-of-sync, displaying in the console `unknown` and eventually `available` within a few minutes. Ensure that the {ocp} engine time is configured correctly. See https://docs.openshift.com/container-platform/4.6/installing/install_config/installing-customizing.html[Customizing nodes].
+Engine and manage cluster time might become out-of-sync, displaying as `unknown` and eventually `available` within a few minutes. Ensure that the {ocp} engine time is configured correctly. See https://docs.openshift.com/container-platform/4.6/installing/install_config/installing-customizing.html[Customizing nodes].
 
-[#importing-certain-versions-of-ibm-red-hat-openshift-kubernetes-service-clusters-is-not-supported]
-=== Importing certain versions of IBM {ocp-short} Kubernetes Service clusters is not supported
-// 1.0.0:2179
-
-You cannot import IBM {ocp-short} Kubernetes Service version 3.11 clusters.
-Later versions of IBM OpenShift Kubernetes Service are supported.
 
 [#detaching-openshift-container-platform-3.11-does-not-remove-the-open-cluster-management-agent]
 === Detaching {ocp-short} 3.11 does not remove the _open-cluster-management-agent_

@@ -1,5 +1,6 @@
 [#maintaining-a-custom-list-of-release-images-when-connected]
 = Maintaining a custom list of release images when connected
+ NW THIS NEEDS REWRITTEN, NO CONSOLE TO USE
 
 You might want to ensure that you use the same release image for all of your clusters.
 To simplify, you can create your own custom list of release images that are available when creating a cluster.

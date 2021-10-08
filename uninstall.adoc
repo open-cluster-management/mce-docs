@@ -46,57 +46,27 @@ oc project <namespace>
 . Enter the following command to remove the `MultiClusterEngine` custom resource:
 +
 ----
-oc delete MultiClusterEngine --all
+oc delete multiclusterengine --all
 ----
 +
 You can view the progress by entering the following command: 
 +
 ----
-oc get mch -o yaml
+oc get multiclusterengine -o yaml
 ----
 
-. Remove any potential remaining artifacts by running the clean-up script. 
-+
-*Note*: If `cert-manager` was manually installed in your cluster, be sure to review the commands in the clean-up script and remove commands that are specific to `cert-manager`.
 
-.. Install the Helm CLI binary version 3.2.0, or later, by following the instructions at https://helm.sh/docs/intro/install/[Installing Helm].
-
-.. Copy the following script into a file:
-+
+. Enter the following commands to delete the multicluster-engine `ClusterServiceVersion` in the namespace it is installed in:
 ----
-#!/bin/bash
-MCE_NAMESPACE=<namespace>
-oc delete mce --all -n $MCE_NAMESPACE
-helm ls --namespace $MCE_NAMESPACE | cut -f 1 | tail -n +2 | xargs -n 1 helm delete --namespace $MCE_NAMESPACE
-oc delete apiservice v1beta2.webhook.certmanager.k8s.io v1.admission.cluster.open-cluster-management.io v1.admission.work.open-cluster-management.io
-oc delete clusterimageset --all
-oc delete configmap -n $MCE_NAMESPACE cert-manager-controller cert-manager-cainjector-leader-election cert-manager-cainjector-leader-election-core
-oc delete consolelink acm-console-link
-oc delete crd klusterletaddonconfigs.agent.open-cluster-management.io placementbindings.policy.open-cluster-management.io policies.policy.open-cluster-management.io userpreferences.console.open-cluster-management.io searchservices.search.acm.com 
-oc delete mutatingwebhookconfiguration cert-manager-webhook cert-manager-webhook-v1alpha1 ocm-mutating-webhook managedclustermutators.admission.cluster.open-cluster-management.io 
-oc delete oauthclient multicloudingress
-oc delete rolebinding -n kube-system cert-manager-webhook-webhook-authentication-reader
-oc delete scc kui-proxy-scc
-oc delete validatingwebhookconfiguration cert-manager-webhook cert-manager-webhook-v1alpha1 channels.apps.open.cluster.management.webhook.validator application-webhook-validator multiclusterengine-operator-validating-webhook ocm-validating-webhook
-----
-+
-Replace `<namespace>` in the script with the name of the namespace where {product-title-short} was installed. Ensure that you specify the correct namespace, as the namespace is cleaned out and deleted. 
+❯ oc get csv
+NAME                         DISPLAY                              VERSION   REPLACES   PHASE
+multicluster-engine.v1.0.0   multicluster engine for Kubernetes   1.0.0                Succeeded
 
-.. Run the script to remove any possible artifacts that remain from the previous installation. If there are no remaining artifacts, a message is returned that no resources were found.
-+
-*Note:* If you plan to reinstall the same {product-title-short} version, you can skip the next steps in this procedure and reinstall the custom resource. Proceed for a complete operator uninstall.
-
-. Enter the following command to remove all of the related components and subscriptions:
-+
-----
-oc delete subs --all
+❯ oc delete clusterserviceversion multicluster-engine.v1.0.0
+❯ oc delete sub multicluster-engine
 ----
 
-. Enter the following command to delete the `ClusterServiceVersion`:
-+
-----
-oc delete clusterserviceversion --all
-----
+The CSV version shown here may be different.
 
 [#deleting-the-components-by-using-the-console]
 == Deleting the components by using the console
@@ -112,10 +82,25 @@ When you use the {ocp} console to uninstall, you remove the operator. Complete t
 
 .. Select *Delete MultiClusterEngine*.
 
-. Run the clean-up script according to the procedure in xref:../install/uninstall.adoc#removing-a-multiclusterengine-instance-by-using-commands[Removing a MultiClusterEngine instance by using commands].
+. Run the clean-up script according to the procedure in xref:#troubleshoot-uninstall[Troubleshooting Uninstall].
 +
 *Tip:* If you plan to reinstall the same {product-title-short} version, you can skip the rest of the steps in this procedure and reinstall the custom resource.
 
 . Navigate to *Installed Operators*.
 
 . Remove the _{product-title-short}_ operator by selecting the _Options_ menu and selecting *Uninstall operator*.
+
+
+[#troubleshoot-uninstall]
+== Troubleshooting Uninstall
+
+If the multicluster engine custom resource is not being removed, remove any potential remaining artifacts by running the clean-up script. 
+
+.. Copy the following script into a file:
++
+----
+#!/bin/bash
+oc delete apiservice v1.admission.cluster.open-cluster-management.io v1.admission.work.open-cluster-management.io
+oc delete validatingwebhookconfiguration multiclusterengines.multicluster.openshift.io
+oc delete mce --all 
+----

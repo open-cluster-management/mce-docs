@@ -57,6 +57,6 @@ metadata:
   name: multiclusterengine
   namespace: <namespace>
 spec:
-  targe Nammespace: <target>
+  targetNamespace: <target>
 ----
 

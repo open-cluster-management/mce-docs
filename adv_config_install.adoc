@@ -34,7 +34,6 @@ apiVersion: operator.open-cluster-management.io/v1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
-  namespace: <namespace>
 spec:
   imagePullSecret: <secret>
 ----
@@ -55,7 +54,6 @@ apiVersion: operator.open-cluster-management.io/v1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
-  namespace: <namespace>
 spec:
   targetNamespace: <target>
 ----

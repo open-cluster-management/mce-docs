@@ -39,7 +39,7 @@ spec:
 ----
 
 
-[#(target-namespace)]
+[#target-namespace]
 == Target namespace
 
 . The operands of the {product-title-short} can be installed in a designated namespace, by specifying a location in the {product-title-short}. This namespace will be created upon application of {product-title-short}.

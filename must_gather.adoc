@@ -23,7 +23,7 @@ With this scenario, you check the guide to see if your solution is in the docume
 
 See the following procedure to start using the `must-gather` command:
 
-. Learn about the `must-gather` command and install the prerequisites that you need at https://docs.openshift.com/container-platform/4.8/support/gathering-cluster-data.html[Gathering data about your cluster] in the {ocp} documentation.
+. Learn about the `must-gather` command and install the prerequisites that you need at https://docs.openshift.com/container-platform/4.8/support/gathering-cluster-data.html[Gathering data about your cluster] in the RedHat OpenShift Container Platform documentation.
 
 . Log in to your cluster. For the usual use-case, you should run the `must-gather` while you are logged into your _engine_ cluster. 
 
@@ -39,7 +39,8 @@ See the following procedure to start using the `must-gather` command:
 
 Check for managed clusters that are not set `True` for the JOINED and AVAILABLE column. You can run the `must-gather` command on those clusters that are not connected with `True` status.
 
-. Add the {product-title} image that is used for gathering data and the directory. Run the following command, where you insert the image and the directory for the output:
+. Add the 
+multicluster engine for Kubernetes image that is used for gathering data and the directory. Run the following command, where you insert the image and the directory for the output:
 +
 ----
 oc adm must-gather --image=registry.redhat.io/multicluster-engine/must-gather-rhel8:v2.2.0 --dest-dir=<directory>

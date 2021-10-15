@@ -3,7 +3,8 @@
 
 [[_mce_jsonoverview]]
 == Overview
-This documentation is for the MulticlusterEngine resource for {product-title}. The MulticlusterEngine resource has four possible requests: create, query, delete, and update.
+This documentation is for the MulticlusterEngine resource for 
+multicluster engine for Kubernetes. The MulticlusterEngine resource has four possible requests: create, query, delete, and update.
 
 
 === Version information

@@ -53,11 +53,7 @@ Before you install multicluster engine for Kubernetes, see the following require
 
 You must have a supported OpenShift Container Platform version, including the registry and storage services, installed and working. For more information about installing OpenShift Container Platform, see the OpenShift Container Platform documentation.
 
-. Verify that a 
-multicluster engine for Kubernetes engine is not already installed on your OpenShift Container Platform cluster. 
-multicluster engine for Kubernetes allows only one single 
-multicluster engine for Kubernetes engine installation on each OpenShift Container Platform cluster. Continue with the following steps if there is no 
-multicluster engine for Kubernetes engine installed.
+. Verify that a multicluster engine for Kubernetes engine operator is not already installed on your OpenShift Container Platform cluster. The multicluster engine for Kubernetes operator allows only one single installation on each OpenShift Container Platform cluster. Continue with the following steps if there is no installation.
 
 . To ensure that the OpenShift Container Platform cluster is set up correctly, access the OpenShift Container Platform web console with the following command:
 
@@ -257,6 +253,8 @@ error: unable to recognize "./mce.yaml": no matches for kind "MultiClusterEngine
 ----
 oc get mce -o=jsonpath='{.items[0].status.phase}'
 ----
+
+If you are reinstalling {product-title-short} and the pods do not start, see link:./uninstall.adoc#troubleshoot-uninstall[Troubleshooting reinstallation failure] for steps to work around this problem.
 
 *Notes:*
 

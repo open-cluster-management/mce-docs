@@ -1,10 +1,10 @@
 
 [#mce-docs]
-= Multicluster Engine Documentation
+= The multicluster engine operator documentation.
+
+The multicluster engine operator is a software operator that enhances cluster fleet management. The multicluster engine operator supports Red Hat OpenShift Cluster Manager and Kubernetes cluster lifecycle management across clouds and data centers. 
 
 See the following documentation:
-
-INTRODUCTION
 
 - xref:./requirements.adoc#requirements-and-recommendations[Requirements and recommendations]
 - xref:./install_connected.adoc#installing-while-connected-online[Installing while connected online]

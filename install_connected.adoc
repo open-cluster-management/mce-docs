@@ -204,7 +204,7 @@ spec:
 
 +
 *Note:* For installing the 
-multicluster engine for Kubernetes engine on infrastructure nodes, the see link:./install_connected.adoc#infra-olm-sub-add-config[{olm-short} Subscription additional configuration] section.
+multicluster engine for Kubernetes engine on infrastructure nodes, the see link:./install_connected.adoc#infra-olm-sub-add-config[ Operator Lifecycle Manager Subscription additional configuration] section.
 
 +
 . Run the following command to create the OpenShift Container Platform Subscription. Replace `subscription` with the name of the subscription file that you created:
@@ -267,7 +267,7 @@ multicluster engine for Kubernetes.
 
 An OpenShift Container Platform cluster can be configured to contain infrastructure nodes for running approved management components. Running components on infrastructure nodes avoids allocating OpenShift Container Platform subscription quota for the nodes that are running those management components.
 
-After adding infrastructure nodes to your OpenShift Container Platform cluster, follow the link:./install_connected.adoc#installing-from-the-cli[Installing from the OpenShift Container Platform CLI] instructions and add the following configurations to the {olm-short} Subscription and `MultiClusterEngine` custom resource.
+After adding infrastructure nodes to your OpenShift Container Platform cluster, follow the link:./install_connected.adoc#installing-from-the-cli[Installing from the OpenShift Container Platform CLI] instructions and add the following configurations to the  Operator Lifecycle Manager Subscription and `MultiClusterEngine` custom resource.
 
 [#adding-infra-nodes]
 === Add infrastructure nodes to the OpenShift Container Platform cluster
@@ -290,9 +290,9 @@ spec:
 ----
 
 [#infra-olm-sub-add-config]
-=== {olm-short} Subscription additional configuration
+===  Operator Lifecycle Manager Subscription additional configuration
 
-Add the following additional configuration before applying the {olm-short} Subscription:
+Add the following additional configuration before applying the  Operator Lifecycle Manager Subscription:
 
 [source,yaml]
 ----

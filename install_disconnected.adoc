@@ -129,12 +129,12 @@ spec:
 oc apply -f mce-policy.yaml
 ----
 
-. Enable the disconnected {olm} Red Hat Operators and Community Operators.
+. Enable the disconnected  Operator Lifecycle Manager Red Hat Operators and Community Operators.
 +
-the multicluster engine for Kubernetes operator is included in the {olm} Red Hat Operator catalog.
+the multicluster engine for Kubernetes operator is included in the  Operator Lifecycle Manager Red Hat Operator catalog.
 
-. Configure the disconnected {olm} for the Red Hat Operator catalog. Follow the steps in the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/operators/administrator-tasks#{olm}-restricted-networks[Using Operator Lifecycle Manager on restricted networks] topic of the Red Hat OpenShift Container Platform documentation.
+. Configure the disconnected  Operator Lifecycle Manager for the Red Hat Operator catalog. Follow the steps in the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/operators/administrator-tasks# Operator Lifecycle Manager-restricted-networks[Using Operator Lifecycle Manager on restricted networks] topic of the Red Hat OpenShift Container Platform documentation.
 
-. Now that you have the image in the disconnected {olm}, continue to install the multicluster engine for Kubernetes operator for Kubernetes from the {olm} catalog.
+. Now that you have the image in the disconnected  Operator Lifecycle Manager, continue to install the multicluster engine for Kubernetes operator for Kubernetes from the  Operator Lifecycle Manager catalog.
 
 See xref:../install/install_connected.adoc#installing-while-connected-online[Installing while connected online] for the required steps.

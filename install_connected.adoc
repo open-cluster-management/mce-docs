@@ -254,7 +254,7 @@ error: unable to recognize "./mce.yaml": no matches for kind "MultiClusterEngine
 oc get mce -o=jsonpath='{.items[0].status.phase}'
 ----
 
-If you are reinstalling {product-title-short} and the pods do not start, see link:./uninstall.adoc#troubleshoot-uninstall[Troubleshooting reinstallation failure] for steps to work around this problem.
+If you are reinstalling the multicluster engine for Kubernetes operator and the pods do not start, see link:./uninstall.adoc#troubleshoot-uninstall[Troubleshooting reinstallation failure] for steps to work around this problem.
 
 *Notes:*
 

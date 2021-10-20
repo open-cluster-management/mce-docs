@@ -5,7 +5,7 @@ The multicluster engine for Kubernetes operator is installed with Operator Lifec
 
 **Required access:** Cluster administrator
 
-**Important:** FOr OpenShift Container Platform Dedicated environment, you must have `cluster-admin` permissions. By default `dedicated-admin` role does not have the required permissions to create namespaces in the OpenShift Container Platform Dedicated environment. 
+**Important:** For OpenShift Container Platform Dedicated environment, you must have `cluster-admin` permissions. By default `dedicated-admin` role does not have the required permissions to create namespaces in the OpenShift Container Platform Dedicated environment. 
 
 - By default, the engine components are installed on worker nodes of your OpenShift Container Platform cluster without any additional configuration. You can install the engine onto worker nodes by using the OpenShift Container Platform OperatorHub web console interface, or by using the OpenShift Container Platform CLI.
 
@@ -88,8 +88,7 @@ multicluster engine for Kubernetes.
 +
 * Namespace: 
 
-  - The 
-multicluster engine for Kubernetes engine must be installed in its own namespace, or project. 
+  - The multicluster engine for Kubernetes engine must be installed in its own namespace, or project. 
 
   - By default, the OperatorHub console installation process creates a namespace titled `multicluster-engine`. *Best practice:* Continue to use the `multicluster-engine` namespace if it is available.  
   
@@ -116,7 +115,7 @@ multicluster engine for Kubernetes engine must be installed in its own namespace
  .. Select *Create MultiClusterEngine*.
  .. Update the default values in the YAML file. See options in the _MultiClusterEngine advanced configuration_ section of the documentation.
  
-* The following example shows the default template. Confirm that `namespace` is your project namespace:
+* The following example shows the default template.
 
 +
 [source,yaml]
@@ -125,7 +124,6 @@ apiVersion: operator.multicluster-engine.io/v1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
-  namespace: <namespace>
 spec: {}
 ----
 
@@ -214,7 +212,7 @@ multicluster engine for Kubernetes engine on infrastructure nodes, the see link:
 oc apply -f <path-to-file>/<subscription>.yaml
 ----
 
-. Create a YAML file to configure the `MultiClusterEngine` custom resource. Your default template should look similar to the following example. Replace `namespace` with the name of your project namespace:
+. Create a YAML file to configure the `MultiClusterEngine` custom resource. Your default template should look similar to the following example:
 
 +
 [source,yaml]
@@ -223,13 +221,11 @@ apiVersion: operator.multicluster-engine.io/v1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
-  namespace: <namespace>
 spec: {}
 ----
 
 +
-*Note:* For installing the 
-multicluster engine for Kubernetes engine on infrastructure nodes, see the link:./install_connected.adoc#infra-mce-add-config[MultiClusterEngine custom resource additional configuration] section:
+*Note:* For installing the multicluster engine for Kubernetes engine on infrastructure nodes, see the link:./install_connected.adoc#infra-mce-add-config[MultiClusterEngine custom resource additional configuration] section:
 
 +
 . Run the following command to create the `MultiClusterEngine` custom resource. Replace `custom-resource` with the name of your custom resource file:

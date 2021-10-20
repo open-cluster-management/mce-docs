@@ -1,15 +1,9 @@
-[#discovered-clusters-api]
+[#multiclusterengine-api]
 = API
 
 [[_mce_jsonoverview]]
 == Overview
 This documentation is for the MultiClusterEngine resource for multicluster engine for Kubernetes. The `MultiClusterEngine` resource has four possible requests: create, query, delete, and update.
-
-
-=== Version information
-[%hardbreaks]
-__Version__ : 1.0
-
 
 === Contact information
 [%hardbreaks]
@@ -31,7 +25,7 @@ __Schemes__ : HTTPS
 
 === Tags
 
-* MultiClusterEngines.discovery.open-cluster-management.io : Create and manage MultiClusterEngines
+* multiclusterengines.multicluster.openshift.io : Create and manage MultiClusterEngines
 
 
 === External Docs
@@ -46,7 +40,7 @@ __URL__ : http://swagger.io
 [[_mce-docs_apis_MultiClusterEngine_jsoncreateMultiClusterEngine]]
 === Create a MultiClusterEngine
 ....
-POST /app.k8s.io/v1alpha1/namespaces/{namespace}/MultiClusterEngines
+POST /apis/multicluster.openshift.io/v1alpha1/multiclusterengines
 ....
 
 
@@ -61,8 +55,6 @@ Create a MultiClusterEngine.
 |Type|Name|Description|Schema
 |**Header**|**COOKIE** +
 __required__|Authorization: Bearer {ACCESS_TOKEN} ; ACCESS_TOKEN is the user access token.|string
-|**Path**|**namespace** +
-__required__|Namespace that you want to use, for example, default.|string
 |**Body**|**body** +
 __required__|Parameters describing the MultiClusterEngine to be created.|MultiClusterEngine
 |===
@@ -88,7 +80,7 @@ __required__|Parameters describing the MultiClusterEngine to be created.|MultiCl
 
 ==== Tags
 
-* MultiClusterEngines.discovery.open-cluster-management.io
+* multiclusterengines.multicluster.openshift.io
 
 ===== Request body
 
@@ -307,12 +299,12 @@ __required__|Parameters describing the MultiClusterEngine to be created.|MultiCl
 [[_mce-docs_apis_MultiClusterEngine_jsonqueryoperator]]
 === Query all MultiClusterEngines
 ....
-GET /operator.open-cluster-management.io/v1alpha1/namespaces/{namespace}/operator
+GET /apis/multicluster.openshift.io/v1alpha1/multiclusterengines
 ....
 
 
 ==== Description
-Query your discovered clusters operator for more details.
+Query your multicluster engine for more details.
 
 
 ==== Parameters
@@ -322,8 +314,6 @@ Query your discovered clusters operator for more details.
 |Type|Name|Description|Schema
 |**Header**|**COOKIE** +
 __required__|Authorization: Bearer {ACCESS_TOKEN} ; ACCESS_TOKEN is the user access token.|string
-|**Path**|**namespace** +
-__required__|Namespace that you want to use, for example, default.|string
 |===
 
 
@@ -347,12 +337,12 @@ __required__|Namespace that you want to use, for example, default.|string
 
 ==== Tags
 
-* MultiClusterEngines.discovery.open-cluster-management.io
+* multiclusterengines.multicluster.openshift.io
 
 [[_mce-docs_apis_MultiClusterEngine_jsondeleteoperator]]
 === Delete a MultiClusterEngine operator
 ....
-DELETE /operator.open-cluster-management.io/v1alpha1/namespaces/{namespace}/operator/{MultiClusterEngines_name}
+DELETE /apis/multicluster.openshift.io/v1alpha1/multiclusterengines/{name}
 ....
 
 
@@ -363,10 +353,8 @@ DELETE /operator.open-cluster-management.io/v1alpha1/namespaces/{namespace}/oper
 |Type|Name|Description|Schema
 |**Header**|**COOKIE** +
 __required__|Authorization: Bearer {ACCESS_TOKEN} ; ACCESS_TOKEN is the user access token.|string
-|**Path**|**application_name** +
-__required__|Name of the Discovered Cluster operator that you want to delete.|string
-|**Path**|**namespace** +
-__required__|Namespace that you want to use, for example, default.|string
+|**Path**|**name** +
+__required__|Name of the multiclusterengine that you want to delete.|string
 |===
 
 
@@ -385,7 +373,7 @@ __required__|Namespace that you want to use, for example, default.|string
 
 ==== Tags
 
-* MultiClusterEngines.operator.open-cluster-management.io
+* multiclusterengines.multicluster.openshift.io
 
 
 [[_mce-docs_apis_MultiClusterEngine_jsondefinitions]]
@@ -413,28 +401,12 @@ __required__|MultiClusterEngineSpec defines the desired state of MultiClusterEng
 [options="header", cols=".^2a,.^3a,.^4a"]
 |===
 |Name|Description|Schema
-|**activityTimestamp** +
-__optional__|MultiClusterEngines last available activity timestamp. |metav1.time
-|**apiUrl** +
-__required__|MultiClusterEngines API URL endpoint. |string
-|**cloudProvider** +
-__optional__|Cloud provider of MultiClusterEngine. |string
-|**console** +
-__optional__|MultiClusterEngines console URL endpoint. |string
-|**creationTimestamp** +
-__optional__|MultiClusterEngines creation timestamp. |metav1.time
-|**credential** +
-__optional__| The reference to the credential from which the cluster was discovered. |corev1.ObjectReference
-|**displayName** +
-__required__| The display name of the discovered cluster. |string
-|**isManagedCluster** +
-__required__| If true, cluster is managed by ACM. |boolean
-|**name** +
-__required__| The name of the MultiClusterEngine. |string
-|**openshiftVersion** +
-__optional__| The OpenShift version of the discovered cluster. |string
-|**status** +
-__optional__| The status of the discovered cluster. |string
-|**type** +
-__required__| The OpenShift flavor (ex. OCP, ROSA, etc.). |string
+|**nodeSelector** +
+__optional__| Set the nodeselectors. |map[string]string
+|**imagePullSecret** +
+__optional__| Override pull secret for accessing MultiClusterEngine operand and endpoint images. |string
+|**tolerations** +
+__optional__| Tolerations causes all components to tolerate any taints. |[]corev1.Toleration
+|**targetNamespace** +
+__optional__| Location where MCE resources will be placed. |string
 |===

@@ -82,4 +82,8 @@ For the managed cluster networking requirements, see the following table:
 [#compatibility-with-red-hat-advanced-cluster-management-for-kubernetes]
 == Compatibility with Red Hat Advanced Cluster Management for Kubernetes
 
-Multicluster engine for Kubernetes is not compatible with Red Hat Advanced Cluster Management for Kubernetes. Your cluster should not have Red Hat Advanced Cluster Management installed, and it is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
+Multicluster engine for Kubernetes is not compatible with Red Hat Advanced Cluster Management for Kubernetes. Your cluster should not have Red Hat Advanced Cluster Management installed.
+
+It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
+
+|===

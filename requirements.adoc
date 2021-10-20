@@ -5,6 +5,7 @@ Before you install the multicluster engine for Kubernetes operator 1.0, review t
 
 * <<supported-operating-systems-and-platforms,Supported operating systems and platforms>>
 * <<network-configuration,Network configuration>>
+* <<compability-with-red-hat-advanced-cluster-management-for-kubernetes,Compatibility with Red Hat Advanced Cluster Management for Kubernetes>>
 
 *Note:* There is no console for the Technical Preview version of this product.
 
@@ -33,10 +34,10 @@ Configure your network settings to allow the connections in the following sectio
 
 //Do we have anything here for this section
 
-[#network-configuration-hub]
-=== Hub cluster networking requirements
+[#network-configuration-engine]
+=== Engine cluster networking requirements
 
-For the hub cluster networking requirements, see the following table:
+For the engine cluster networking requirements, see the following table:
 
 |===
 | Direction | Connection | Port (if specified)
@@ -49,20 +50,16 @@ For the hub cluster networking requirements, see the following table:
 | Kubernetes API server of the provisioned managed cluster
 | 6443
 
-| Outbound
-| The channel source, including GitHub, Object Store, and Helm repository. This is only required when you are using Application lifecycle to connect to these sources.
-| 
-
 | Outbound and inbound
 | The `WorkManager` service route on the managed cluster
 | 443
 
 | Inbound
-| The kube API server of the hub cluster from the managed cluster
+| The kube API server of the engine cluster from the managed cluster
 | 6443
 
 | Inbound
-| Post-commit hook from GitHub to the hub cluster. This setting is only required when you use certain application management functions.
+| Post-commit hook from GitHub to the engine cluster. This setting is only required when you use certain application management functions.
 | 6443
 
 |===
@@ -76,13 +73,13 @@ For the managed cluster networking requirements, see the following table:
 | Direction | Connection | Port (if specified)
 
 | Outbound and inbound
-| Kubernetes API server of the hub cluster
+| Kubernetes API server of the engine cluster
 | 6443
 
-| Outbound
-| The managed cluster to the channel source, which includes GitHub, Object Store, and Helm repository. This is only required when you are using application lifecycle to connect to these sources.
 
 |===
 
+[#compatibility-with-red-hat-advanced-cluster-management-for-kubernetes]
+== Compatibility with Red Hat Advanced Cluster Management for Kubernetes
 
-
+Multicluster engine for Kubernetes is not compatible with Red Hat Advanced Cluster Management for Kubernetes. Your cluster should not have Red Hat Advanced Cluster Management installed, and it is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.

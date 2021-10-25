@@ -33,7 +33,29 @@ apiVersion: operator.open-cluster-management.io/v1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
-  namespace: <namespace>
 spec:
   imagePullSecret: <secret>
 ----
+
+
+[#target-namespace]
+== Target namespace
+
+. The operands of the {product-title-short} can be installed in a designated namespace, by specifying a location in the {product-title-short}. This namespace will be created upon application of {product-title-short}.
+
+*Important:* If no target namespace is specified, the namespace of the operator will be used for the operands and will be stated in the {product-title-short} spec.
+
+The following example shows the template if you want to specify a target namespace. Replace `target` with the name of your destination namespace
+
+[source,yaml]
+----
+apiVersion: operator.open-cluster-management.io/v1
+kind: MultiClusterEngine
+metadata:
+  name: multiclusterengine
+spec:
+  targetNamespace: <target>
+----
+
+*Note:* The `target` namespace cannot be the `default` namespace.
+

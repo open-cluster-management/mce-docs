@@ -2,7 +2,7 @@
 = Importing a managed cluster with the CLI
 
 After you install {product-title}, you are ready to import a cluster to manage.
-You can import from both the console and the CLI.
+You can import from the CLI.
 Follow this procedure to import from the CLI.
 
 * <<cli-prerequisites,Prerequisites>>

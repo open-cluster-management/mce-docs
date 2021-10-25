@@ -9,6 +9,8 @@ Before you install the multicluster engine for Kubernetes operator 1.0, review t
 
 *Note:* There is no console for the Technical Preview version of this product.
 
+*Best practice:* Install multicluster engine for Kubernetes on a cluster that is not a Red Hat Advanced Cluster Management cluster. Multicluster engine for Kubernetes is _not_ compatible with Red Hat Advanced Cluster Management for Kubernetes. 
+
 [#supported-operating-systems-and-platforms]
 == Supported operating systems and platforms for hub clusters and managed clusters
 
@@ -76,14 +78,5 @@ For the managed cluster networking requirements, see the following table:
 | Kubernetes API server of the engine cluster
 | 6443
 
-
 |===
 
-[#compatibility-with-red-hat-advanced-cluster-management-for-kubernetes]
-== Compatibility with Red Hat Advanced Cluster Management for Kubernetes
-
-Multicluster engine for Kubernetes is not compatible with Red Hat Advanced Cluster Management for Kubernetes. Your cluster should not have Red Hat Advanced Cluster Management installed.
-
-It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
-
-|===

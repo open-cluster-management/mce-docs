@@ -41,11 +41,11 @@ spec:
 [#target-namespace]
 == Target namespace
 
-. The operands of the {product-title-short} can be installed in a designated namespace, by specifying a location in the {product-title-short}. This namespace will be created upon application of {product-title-short}.
+. The operands can be installed in a designated namespace by specifying a location in the `MultiClusterEngine` custom resource. This namespace is created upon application of the `MultiClusterEngine` custom resource.
 
-*Important:* If no target namespace is specified, the namespace of the operator will be used for the operands and will be stated in the {product-title-short} spec.
+*Important:* If no target namespace is specified, the namespace of the operator is used for the operands and is stated in the `MultiClusterEngine` custom resource specification.
 
-The following example shows the template if you want to specify a target namespace. Replace `target` with the name of your destination namespace
+The following example displays he template you can use to specify a target namespace. Replace `target` with the name of your destination namespace:
 
 [source,yaml]
 ----

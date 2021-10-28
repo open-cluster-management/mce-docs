@@ -1,13 +1,14 @@
 [#importing-a-managed-cluster-with-the-cli]
 = Importing a managed cluster with the CLI
 
-After you install {product-title}, you are ready to import a cluster to manage.
+After you install multicluster engine for Kubernetes, you are ready to import a cluster to manage.
 You can import from the CLI.
 Follow this procedure to import from the CLI.
 
 * <<cli-prerequisites,Prerequisites>>
 * <<supported-architecture,Supported architecture>>
 * <<importing-the-klusterlet,Importing the klusterlet>>
+* <<detaching-managed-cluster,Detaching a managed cluster>>
 
 [#cli-prerequisites]
 == Prerequisites
@@ -39,7 +40,7 @@ oc login
 ----
 
 . Run the following command on the engine cluster to create the namespace.
-*Note:* The cluster name that is defined in `<cluster_name>` is also used as the cluster namespace in the `.yaml` file file and commands:
+*Note:* The cluster name that is defined in `CLUSTER_NAME` is also used as the cluster namespace in the `.yaml` file and commands:
 +
 ----
 oc new-project ${CLUSTER_NAME}
@@ -52,7 +53,7 @@ oc label namespace ${CLUSTER_NAME} cluster.open-cluster-management.io/managedClu
 apiVersion: cluster.open-cluster-management.io/v1
 kind: ManagedCluster
 metadata:
-  name: <cluster_name>
+  name: ${CLUSTER_NAME}
 spec:
   hubAcceptsClient: true
 ----
@@ -124,4 +125,13 @@ Run the following command:
 +
 ----
 kubectl get pod -n open-cluster-management-agent-addon
+----
+
+[#detaching-managed-cluster]
+== Detaching a managed cluster
+
+To detach a managed cluster from the multicluster engine for Kubernetes cluster, run the following command:
+
+----
+oc delete managedcluster ${CLUSTER_NAME}
 ----

@@ -13,15 +13,15 @@ Follow this procedure to import from the CLI.
 [#cli-prerequisites]
 == Prerequisites
 
-* You need a {product-title} engine cluster that is deployed.
-If you are importing bare metal clusters, you must have the engine cluster installed on {ocp} version 4.6 or later. 
+* You need a multicluster engine for Kubernetes cluster that is deployed.
+If you are importing bare metal clusters, you must have the engine cluster installed on OpenShift Container Platform version 4.6 or later. 
 * You need a separate cluster that you want to manage and Internet connectivity.
-* You need the {ocp} CLI version 4.6 or later, to run `oc` commands. See https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/cli_tools/openshift-cli-oc#cli-getting-started[Getting started with the OpenShift CLI] for information about installing and configuring the Red Hat OpenShift CLI, `oc`.
+* You need the OpenShift Container Platform CLI version 4.6 or later, to run `oc` commands. See https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/cli_tools/openshift-cli-oc#cli-getting-started[Getting started with the OpenShift CLI] for information about installing and configuring the Red Hat OpenShift CLI, `oc`.
 * You need to install the Kubernetes CLI, `kubectl`.
 To install `kubectl`, see _Install and Set Up kubectl_ in the https://kubernetes.io/docs/tasks/tools/install-kubectl/[Kubernetes documentation].
 +
 *Note:* Download the installation file for CLI tools from the console.
-* If you are importing a cluster that was not created by {ocp}, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when {product-title} was installed. See link:../adv_config_install.adoc#custom-image-pull-secret[Custom Image Pull Secret] for more information about defining the secret. 
+* If you are importing a cluster that was not created by OpenShift Container Platform, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when multicluster engine for Kubernetes was installed. See link:../adv_config_install.adoc#custom-image-pull-secret[Custom Image Pull Secret] for more information about defining the secret. 
 
 [#supported-architecture]
 == Supported architectures

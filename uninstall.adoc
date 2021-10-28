@@ -15,7 +15,7 @@ Before you uninstall the
 multicluster engine for Kubernetes engine, you must detach all of the clusters that are managed by that engine. To avoid errors, detach all clusters that are still managed by the engine, then try to uninstall again.
 
 * If you have managed clusters attached, you might see the following message.
-* 
+ 
 
 +
 ----
@@ -23,16 +23,7 @@ Cannot delete MultiClusterEngine resource because ManagedCluster resource(s) exi
 ----
 
 +
-For more information about detaching clusters, see the _Removing a cluster from management_ section by selecting the information for your provider in link:../clusters/create.adoc#creating-a-cluster[Creating a cluster]. 
-
-* If you have Bare metal assets, you might see the following:
-
-+ 
-----
-Cannot delete MultiClusterEngine resource because BareMetalAssets resource(s) exist
-----
-+
-For more information about removing the bare metal assets, see link:../clusters/bare_assets.adoc#removing-a-bare-metal-asset[Removing a bare metal asset].
+See link:../import-cli.adoc#detaching-managed-cluster[Detaching a managed cluster] for more information about detaching managed clusters. 
 
 [#removing-a-multiclusterengine-instance-by-using-commands]
 == Removing resources by using commands

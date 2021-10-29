@@ -1,22 +1,25 @@
 [#getting-started]
 = Getting started
 
+* <<introduction,Introduction>>
+* <<install,Install>>
+* <<create-clusters,Create clusters>>
 * <<manage-clusters,Manage clusters>>
-* <<manage-applications,Manage applications>>
-* <<manage-security,Manage security>>
-* <<observability-quick, Observe clusters>>
+* <<todo, TODO>>
 
 [#introduction]
 == Introduction
 
 Coming: Architecture and intro.
 
-Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../install/requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your hub cluster, you can proceed with link:../install/install_connected.adoc#installing-while-connected-online[Installing while connected online].
+Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your multicluster engine for Kubernetes cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online].
 
+[#create-clusters]
+== Create clusters
 
 [#manage-clusters]
 == Manage clusters
 
 
-[#manage-applications]
-== Manage applications
+[#todo]
+== TODO

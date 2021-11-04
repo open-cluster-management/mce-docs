@@ -3,7 +3,7 @@
 
 * <<introduction,Introduction>>
 * <<create-and-manage-clusters,Create clusters>>
-* <<todo, TODO>>
+* <<manifestwork-example, ManifestWork example>>
 
 [#introduction]
 == Introduction
@@ -24,5 +24,119 @@ When you create a managed cluster, the new managed cluster imports automatically
 . If you have a cluster that you want to import manually, you can view link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] to learn how to import a managed cluster.
 . You can view link:../import_cli.adoc#detaching-managed-cluster[Detaching a managed cluster] when you no longer need to manage a cluster.
 
-[#todo]
-== TODO
+[#manifestwork-example]
+== ManifestWork example
+
+You can now deploy workloads onto your managed clusters from your multicluster engine for Kubernetes cluster.
+
+Follow the example to create a basic Deployment on your managed cluster from your multicluster engine for Kubernetes cluster:
+
+. Log in to your multicluster engine for Kubernetes cluster:
+
++
+----
+oc login
+----
+
+. Create a YAML file to configure the `ManifestWork` resource. Replace `CLUSTER_NAME` with the name of the managed cluster you imported following link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI]:
+
++
+[source,yaml]
+----
+apiVersion: work.open-cluster-management.io/v1
+kind: ManifestWork
+metadata:
+  name: hello-work
+  namespace: ${CLUSTER_NAME}
+  labels:
+    app: hello
+spec:
+  workload:
+    manifests:
+    - apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: hello
+        namespace: default
+      spec:
+        selector:
+          matchLabels:
+            app: hello
+        template:
+          metadata:
+            labels:
+              app: hello
+          spec:
+            containers:
+              - name: hello
+                image: quay.io/asmacdo/busybox
+                command: ['/bin/sh', '-c', 'echo "Hello, Kubernetes!" && sleep 300']
+    - apiVersion: v1
+      kind: Service
+      metadata:
+        labels:
+          app: hello
+        name: hello
+        namespace: default
+      spec:
+        ports:
+        - port: 8000
+          protocol: TCP
+          targetPort: 8000
+        selector:
+          app: hello
+----
+
+. Apply the YAML file. Run the following command:
+
++
+----
+oc apply -f manifestwork.yaml
+----
+
+The example will deploy into your managed cluster's `default` namespace. 
+
+
+You can check the status of the ManifestWork from your multicluster engine for Kubernetes cluster:
+
+
+----
+oc get manifestwork -n ${CLUSTER_NAME} hello-work -o yaml
+----
+
+You can view the results on your managed cluster.
+
+. Log in to your managed cluster 
+
++
+----
+oc login
+----
+
+. View the deployment created via your multicluster engine for Kubernetes cluster:
+
++
+----
+$ oc get deploy -n default
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+hello   1/1     1            1           37s
+----
+
++
+You can also view the created pod:
+
++
+----
+$ oc get po
+NAME                     READY   STATUS    RESTARTS   AGE
+hello-65f58985ff-4rm57   1/1     Running   0          42s
+----
+
++
+If you view the logs for the created pod, you should see the expected message:
+
++
+----
+$ oc logs hello-65f58985ff-4rm57
+Hello, Kubernetes!
+----

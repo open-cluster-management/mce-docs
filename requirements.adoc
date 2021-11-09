@@ -6,7 +6,9 @@ Before you install the multicluster engine for Kubernetes operator 1.0, review t
 * <<supported-operating-systems-and-platforms,Supported operating systems and platforms>>
 * <<network-configuration,Network configuration>>
 
-*Best practice:* Install multicluster engine for Kubernetes on a cluster that is not a Red Hat Advanced Cluster Management cluster. Multicluster engine for Kubernetes is _not_ compatible with Red Hat Advanced Cluster Management for Kubernetes. 
+*Important:* Install multicluster engine for Kubernetes on a cluster that is not a Red Hat Advanced Cluster Management for Kubernetes cluster. The multicluster engine for Kubernetes cannot co-exist with Red Hat Advanced Cluster Management for Kubernetes because multicluster engine for Kubernetes and Red Hat Advanced Cluster Management provide some of the same management components.
+
+*Best practice:* It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
 
 *Note:* There is no console for the Technical Preview version of this technology.
 
@@ -36,9 +38,9 @@ Configure your network settings to allow the connections in the following sectio
 //Do we have anything here for this section
 
 [#network-configuration-engine]
-=== Engine cluster networking requirements
+=== The multicluster engine for Kubernetes operator cluster networking requirements
 
-For the engine cluster networking requirements, see the following table:
+For the multicluster engine for Kubernetes cluster networking requirements, see the following table:
 
 |===
 | Direction | Connection | Port (if specified)
@@ -56,11 +58,11 @@ For the engine cluster networking requirements, see the following table:
 | 443
 
 | Inbound
-| The kube API server of the engine cluster from the managed cluster
+| The kube API server of the multicluster engine for Kubernetes cluster from the managed cluster
 | 6443
 
 | Inbound
-| Post-commit hook from GitHub to the engine cluster. This setting is only required when you use certain application management functions.
+| Post-commit hook from GitHub to the multicluster engine for Kubernetes cluster. This setting is only required when you use certain application management functions.
 | 6443
 
 |===
@@ -74,7 +76,7 @@ For the managed cluster networking requirements, see the following table:
 | Direction | Connection | Port (if specified)
 
 | Outbound and inbound
-| Kubernetes API server of the engine cluster
+| Kubernetes API server of the multicluster engine for Kubernetes cluster
 | 6443
 
 |===

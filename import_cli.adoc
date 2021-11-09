@@ -2,12 +2,13 @@
 = Importing a managed cluster with the CLI
 
 After you install multicluster engine for Kubernetes, you are ready to import a cluster to manage.
-You can import from the CLI.
+Using the OpenShift Container Platform CLI, you can import a cluster using the `kubeconfig` file of the managed cluster. Alternatively, you can run import commands manually on the managed cluster.
 Follow this procedure to import from the CLI.
 
 * <<cli-prerequisites,Prerequisites>>
 * <<supported-architecture,Supported architecture>>
-* <<importing-the-klusterlet,Importing the klusterlet>>
+* <<importing-wth-the-kubeconfig-file,Importing with the kubeconfig file>>
+* <<importing-with-manual-commands,Importing with manual commands>>
 * <<detaching-managed-cluster,Detaching a managed cluster>>
 
 [#cli-prerequisites]
@@ -17,8 +18,7 @@ Follow this procedure to import from the CLI.
 If you are importing bare metal clusters, you must have the engine cluster installed on OpenShift Container Platform version 4.6 or later. 
 * You need a separate cluster that you want to manage and Internet connectivity.
 * You need the OpenShift Container Platform CLI version 4.6 or later, to run `oc` commands. See https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/cli_tools/openshift-cli-oc#cli-getting-started[Getting started with the OpenShift CLI] for information about installing and configuring the Red Hat OpenShift CLI, `oc`.
-* You need to install the Kubernetes CLI, `kubectl`.
-To install `kubectl`, see _Install and Set Up kubectl_ in the https://kubernetes.io/docs/tasks/tools/install-kubectl/[Kubernetes documentation].
+
 +
 *Note:* Download the installation file for CLI tools from the console.
 * If you are importing a cluster that was not created by OpenShift Container Platform, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when multicluster engine for Kubernetes was installed. See link:../adv_config_install.adoc#custom-image-pull-secret[Custom Image Pull Secret] for more information about defining the secret. 
@@ -32,7 +32,7 @@ To install `kubectl`, see _Install and Set Up kubectl_ in the https://kubernetes
 [#prepare-for-import]
 == Prepare for import
 
-. Log in to your _engine cluster_.
+. Log in to your _multicluster engine for Kubernetes cluster_.
 Run the following command:
 +
 ----
@@ -65,11 +65,54 @@ spec:
 oc apply -f managed-cluster.yaml
 ----
 
-The ManagedCluster-Import-Controller will generate a secret named `+${CLUSTER_NAME}-import+`. The `+${CLUSTER_NAME}-import+` secret contains the `import.yaml` that the user applies to a managed cluster to install klusterlet.
+[#importing-wth-the-kubeconfig-file]
+== Importing with the kubeconfig file
 
-[#importing-the-klusterlet]
+. Retrieve the `kubeconfig` file of the managed cluster.
 
-== Importing the klusterlet
+. Log in to your _multicluster engine for Kubernetes cluster_. 
+Run the following command:
++
+----
+oc login
+----
+
+. Generate the import secret in the `${CLUSTER_NAME}` namespace using the `kubeconfig` file.
+Run the following command:
++
+----
+oc create secret generic auto-import-secret --from-file=kubeconfig=./path/to/kubeconfig-file -n ${CLUSTER_NAME}
+----
+
+. Validate the `JOINED` and `AVAILABLE` status for your imported cluster. Run the following command from the multicluster engine for Kubernetes cluster:
++
+----
+oc get managedcluster ${CLUSTER_NAME}
+----
+
+. Log in to your _managed cluster_. 
+Run the following command:
++
+----
+oc login
+----
+
+. Validate the pod status on the managed cluster. 
+Run the following command:
++
+----
+oc get pod -n open-cluster-management-agent
+----
+
+. Addons will be installed after the managed cluster is `AVAILABLE`. Validate the pod status of addons on the managed cluster. 
+Run the following command:
++
+----
+kubectl get pod -n open-cluster-management-agent-addon
+----
+
+[#importing-with-manual-commands]
+== Importing with manual command
 
 *Important:* The import command contains pull secret information that is copied to each of the imported clusters.
 Anyone who can access the imported clusters can also view the pull secret information.
@@ -96,35 +139,35 @@ oc get secret ${CLUSTER_NAME}-import -n ${CLUSTER_NAME} -o jsonpath={.data.impor
 Run the following command:
 +
 ----
-kubectl apply -f klusterlet-crd.yaml
+oc apply -f klusterlet-crd.yaml
 ----
 
 . Apply the `import.yaml` file that was generated in step 2.
 Run the following command:
 +
 ----
-kubectl apply -f import.yaml
+oc apply -f import.yaml
 ----
 
 . Validate the pod status on the target managed cluster.
 Run the following command:
 +
 ----
-kubectl get pod -n open-cluster-management-agent
+oc get pod -n open-cluster-management-agent
 ----
 
 . Validate `JOINED` and `AVAILABLE` status for your imported cluster.
 Run the following command from the _engine_ cluster:
 +
 ----
-kubectl get managedcluster ${CLUSTER_NAME}
+oc get managedcluster ${CLUSTER_NAME}
 ----
 
 . Addons will be installed after the managed cluster is `AVAILABLE`. Validate the pod status of addons on the target managed cluster.
 Run the following command:
 +
 ----
-kubectl get pod -n open-cluster-management-agent-addon
+oc get pod -n open-cluster-management-agent-addon
 ----
 
 [#detaching-managed-cluster]

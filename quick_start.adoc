@@ -10,7 +10,7 @@
 
 Coming: Architecture and intro.
 
-Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your multicluster engine for Kubernetes cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online].
+Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online].
 
 [#create-and-manage-clusters]
 == Create and manage clusters
@@ -126,7 +126,7 @@ You can also view the created pod:
 
 +
 ----
-$ oc get po
+$ oc get pod
 NAME                     READY   STATUS    RESTARTS   AGE
 hello-65f58985ff-4rm57   1/1     Running   0          42s
 ----

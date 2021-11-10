@@ -8,8 +8,6 @@
 [#introduction]
 == Introduction
 
-Coming: Architecture and intro.
-
 Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online].
 
 [#create-and-manage-clusters]

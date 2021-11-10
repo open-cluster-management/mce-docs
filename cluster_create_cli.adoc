@@ -9,40 +9,7 @@ Learn how to create OpenShift Container Platform clusters with Hive, the multicl
 [#create-a-cluster-with-clusterdeployment]
 == Create a cluster with ClusterDeployment
 
-Learn how to create a cluster directly for management.
-
-. Log into your multicluster engine for Kubernetes cluster.
-
-. Create a project for managing the cluster you want to create. Run the following commands, where `cluster_name` is the name for the cluster you want to create:
-
-+
-[source,terminal]
-----
-oc new-project <cluster_name>
-oc label namespace <cluster_name> cluster.open-cluster-management.io/managedCluster=<cluster_name>
-----
-
-. Create a YAML file to configure the `ManagedCluster` custom resource. Replace `cluster_name` with the name for the cluster you want to create:
-
-+
-[source,yaml]
-----
-apiVersion: cluster.open-cluster-management.io/v1
-kind: ManagedCluster
-metadata:
-  name: <cluster_name>
-spec:
-  hubAcceptsClient: true
-----
-
-. Run the following command to create the `ManagedCluster` resource. Replace `managed-cluster` with the name of the managed cluster YAML file that you created:
-
-+
-[source,terminal]
-----
-oc apply -f <path-to-file>/<managed-cluster>.yaml
-----
-+
+Learn how to create an individual cluster.
 
 . Follow the link:https://github.com/openshift/hive/blob/master/docs/using-hive.md#using-hive[Using Hive] documentation to create the `ClusterDeployment` custom resource.
 
@@ -52,5 +19,3 @@ oc apply -f <path-to-file>/<managed-cluster>.yaml
 Learn how to create a cluster with Hive's cluster pool API.
 
 . Follow the link:https://github.com/openshift/hive/blob/master/docs/clusterpools.md[Cluster Pools] documentation to provision a cluster.
-
-. Follow the link:../import_cli.adoc[Importing a managed cluster with the CLI] documentation to manually import the cluster.

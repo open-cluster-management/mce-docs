@@ -6,19 +6,17 @@ Before you install the multicluster engine for Kubernetes operator 1.0, review t
 * <<supported-operating-systems-and-platforms,Supported operating systems and platforms>>
 * <<network-configuration,Network configuration>>
 
-*Important:* Install multicluster engine for Kubernetes on a cluster that is not a Red Hat Advanced Cluster Management for Kubernetes cluster. The multicluster engine for Kubernetes cannot co-exist with Red Hat Advanced Cluster Management for Kubernetes because multicluster engine for Kubernetes and Red Hat Advanced Cluster Management provide some of the same management components.
+*Important:* Install multicluster engine for Kubernetes on a cluster that is not a Red Hat Advanced Cluster Management for Kubernetes hub cluster. The multicluster engine for Kubernetes cannot co-exist with Red Hat Advanced Cluster Management for Kubernetes because they provide some of the same management components.
 
 *Best practice:* It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
 
-*Note:* There is no console for the Technical Preview version of this technology.
-
 [#supported-operating-systems-and-platforms]
-== Supported operating systems and platforms for hub clusters and managed clusters
+== Supported operating systems and platforms for multicluster engine for Kubernetes clusters and managed clusters
 
 See the following table for supported operating systems:
 
 |===
-| Platform | Supported for hub cluster| Supported for managed cluster
+| Platform | Supported for multicluster engine for Kubernetes cluster| Supported for managed cluster
 | Red Hat OpenShift Container Platform 3.11.200, and later 3.11.x releases| No | Yes
 | Red Hat OpenShift Container Platform 4.8.2, and later| Yes | Yes
 | Red Hat OpenShift Container Platform on Amazon Web Services| Yes | Yes
@@ -58,7 +56,7 @@ For the multicluster engine for Kubernetes cluster networking requirements, see 
 | 443
 
 | Inbound
-| The kube API server of the multicluster engine for Kubernetes cluster from the managed cluster
+| The Kubernetes API server of the multicluster engine for Kubernetes cluster from the managed cluster
 | 6443
 
 | Inbound

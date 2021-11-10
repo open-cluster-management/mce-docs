@@ -84,6 +84,9 @@ Run the following command:
 oc create secret generic auto-import-secret --from-file=kubeconfig=./path/to/kubeconfig-file -n ${CLUSTER_NAME}
 ----
 
++
+*Note:* The import secret is used once and deleted when the import process completes.
+
 . Validate the `JOINED` and `AVAILABLE` status for your imported cluster. Run the following command from the multicluster engine for Kubernetes cluster:
 +
 ----

@@ -47,7 +47,6 @@ The operands can be installed in a designated namespace by specifying a location
 
 The following example displays the template that you can use to specify a target namespace. Replace `target` with the name of your destination namespace:
 
-
 [source,yaml]
 ----
 apiVersion: operator.open-cluster-management.io/v1

@@ -85,7 +85,7 @@ oc create secret generic auto-import-secret --from-file=kubeconfig=./path/to/kub
 ----
 oc get managedcluster ${CLUSTER_NAME}
 ----
-
++
 Proceed with the following steps in the separate cluster that you are importing:
 
 . Log in to the cluster that you are importing. Run the following command:
@@ -129,7 +129,7 @@ oc get secret ${CLUSTER_NAME}-import -n ${CLUSTER_NAME} -o jsonpath={.data.crds\
 ----
 oc get secret ${CLUSTER_NAME}-import -n ${CLUSTER_NAME} -o jsonpath={.data.import\\.yaml} | base64 --decode > import.yaml
 ----
-
++
 Proceed with the following steps in the separate cluster that you are importing:
 
 . Log in to the cluster that you are importing.

@@ -131,6 +131,10 @@ spec: {}
 . Select *Create* to initialize the custom resource. It can take up to 10 minutes for the 
 multicluster engine for Kubernetes engine to build and start.
 
++
+After the 
+multicluster engine for Kubernetes engine is created, the status for the operator is _Running_ on the _Installed Operators_ page.
+
 [#installing-from-the-cli]
 == Installing from the OpenShift Container Platform CLI
 

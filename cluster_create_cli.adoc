@@ -1,7 +1,7 @@
 [#create-a-cluster]
 = Create a cluster
 
-Learn how to create OpenShift Container Platform clusters with Hive, the multicluster engine for Kubernetes component for provisioning clusters. The Hive Controller provisions the clusters that you create with multicluster engine for Kubernetes.
+Learn how to create Red Hat OpenShift Container Platform clusters with Hive, the multicluster engine for Kubernetes component for provisioning clusters. The Hive Controller provisions the clusters that you create with multicluster engine for Kubernetes.
 
 * <<create-a-cluster-with-cluster-deployment,Create a cluster with ClusterDeployment>>
 * <<create-a-cluster-with-clusterpool,Create a cluster with cluster pool>>

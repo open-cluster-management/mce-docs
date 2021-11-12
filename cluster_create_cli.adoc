@@ -1,7 +1,7 @@
 [#create-a-cluster]
 = Create a cluster
 
-Learn how to create Red Hat OpenShift Container Platform clusters with Hive, the multicluster engine for Kubernetes component for provisioning clusters. The Hive Controller provisions the clusters that you create with multicluster engine for Kubernetes.
+The multicluster engine for Kubernetes uses internal Hive components to create Red Hat OpenShift Container Platform clusters. See the following information to learn how to create clusters.
 
 * <<create-a-cluster-with-cluster-deployment,Create a cluster with ClusterDeployment>>
 * <<create-a-cluster-with-clusterpool,Create a cluster with cluster pool>>
@@ -9,13 +9,13 @@ Learn how to create Red Hat OpenShift Container Platform clusters with Hive, the
 [#create-a-cluster-with-clusterdeployment]
 == Create a cluster with ClusterDeployment
 
-Learn how to create an individual cluster.
+A `ClusterDeployment` is a Hive custom resource. See the following documentation to learn how to create an individual cluster:
 
 . Follow the link:https://github.com/openshift/hive/blob/master/docs/using-hive.md#using-hive[Using Hive] documentation to create the `ClusterDeployment` custom resource.
 
 [#create-a-cluster-with-clusterpool]
-== Create a cluster with cluster pool
+== Create a cluster with ClusterPool
 
-Learn how to create a cluster with Hive's cluster pool API.
+A `ClusterPool` is also a Hive custom resource that is used to create multiple clusters. Create a cluster with the Hive `ClusterPool` API.
 
 . Follow the link:https://github.com/openshift/hive/blob/master/docs/clusterpools.md[Cluster Pools] documentation to provision a cluster.

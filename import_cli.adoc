@@ -1,12 +1,11 @@
 [#importing-a-cluster]
 = Importing a cluster
 
-After you install multicluster engine for Kubernetes, you are ready to import a cluster to manage with the multicluster engine for Kubernetes.
-Using the OpenShift Container Platform CLI, you can import a cluster using the `kubeconfig` file of the cluster you are importing. Alternatively, you can run import commands manually on the cluster you are importing.
-Follow this procedure to import from the CLI.
+After you install the multicluster engine for Kubernetes operator, you are ready to import a cluster to manage. Using the Red Hat OpenShift Container Platform CLI, you can import a cluster using the `kubeconfig` file of the cluster you are importing. Alternatively, you can run import commands manually on the cluster you are importing.
+
+See the following procedure to import from the CLI:
 
 * <<cli-prerequisites,Prerequisites>>
-* <<supported-architecture,Supported architecture>>
 * <<importing-wth-the-kubeconfig-file,Importing with the kubeconfig file>>
 * <<importing-with-manual-commands,Importing with manual commands>>
 * <<detaching-managed-cluster,Detaching a managed cluster>>
@@ -23,11 +22,7 @@ If you are importing bare metal clusters, you must have the engine cluster insta
 *Note:* Download the installation file for CLI tools from the console.
 * If you are importing a cluster that was not created by OpenShift Container Platform, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when multicluster engine for Kubernetes was installed. See link:../adv_config_install.adoc#custom-image-pull-secret[Custom Image Pull Secret] for more information about defining the secret. 
 
-[#supported-architecture]
-== Supported architectures
-
-* Linux (x86_64, s390x, ppc64le)
-* macOS
+* You can use Linux (x86_64, s390x, ppc64le) or macOS.
 
 [#prepare-for-import]
 == Prepare for import

@@ -131,15 +131,6 @@ spec: {}
 . Select *Create* to initialize the custom resource. It can take up to 10 minutes for the 
 multicluster engine for Kubernetes engine to build and start.
 
-+
-After the 
-multicluster engine for Kubernetes engine is created, the status for the operator is _Running_ on the _Installed Operators_ page. You can now access the console for the 
-multicluster engine for Kubernetes engine. See the following steps:
-
- . In the OpenShift Container Platform console navigation, select *Networking* > *Routes*.
- . View the URL for your 
-multicluster engine for Kubernetes engine in the list, and navigate to it to access the console.
-
 [#installing-from-the-cli]
 == Installing from the OpenShift Container Platform CLI
 

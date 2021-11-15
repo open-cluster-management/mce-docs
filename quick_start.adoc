@@ -2,31 +2,30 @@
 = Getting started
 
 * <<introduction,Introduction>>
-* <<create-and-manage-clusters,Create clusters>>
+* <<create-and-manage-clusters,Create and manage clusters>>
 * <<manifestwork-example, ManifestWork example>>
 
 [#introduction]
 == Introduction
 
-Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online].
+Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:../requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with link:../install_connected.adoc#installing-while-connected-online[Installing while connected online]. 
 
 [#create-and-manage-clusters]
 == Create and manage clusters
 
-You are now ready to create, import, amd manage clusters.
-From your multicluster engine for Kubernetes cluster, you can create other Openshift Container Platform clusters to manage.
+After you have installed, you are ready to create, import, and manage clusters. From your multicluster engine for Kubernetes cluster, you can create other Openshift Container Platform clusters to manage.
 
 . See link:../cluster
 _create_cli.adoc#create-a-cluster[Create a cluster] to learn about the types of managed clusters you can create.
-. If you have a cluster that you want to import manually, you can view link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] to learn how to import a managed cluster.
+
+. If you have a cluster that you want to import manually, view link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] to learn how to import a managed cluster.
+
 . You can view link:../import_cli.adoc#detaching-managed-cluster[Detaching a managed cluster] when you no longer need to manage a cluster.
 
 [#manifestwork-example]
 == ManifestWork example
 
-You can now deploy workloads onto your managed clusters from your multicluster engine for Kubernetes cluster.
-
-Follow the example to create a basic Deployment on your managed cluster from your multicluster engine for Kubernetes cluster:
+You can deploy workloads onto your managed clusters from your multicluster engine for Kubernetes cluster. Follow the example to create a basic deployment on your managed cluster from your multicluster engine for Kubernetes cluster:
 
 . Log in to your multicluster engine for Kubernetes cluster:
 
@@ -35,7 +34,7 @@ Follow the example to create a basic Deployment on your managed cluster from you
 oc login
 ----
 
-. Create a YAML file to configure the `ManifestWork` resource. Replace `CLUSTER_NAME` with the name of the managed cluster you imported following link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI]:
+. Create a YAML file to configure the `ManifestWork` resource as it is in the following example. Replace `CLUSTER_NAME` with the name of the managed cluster that you imported from the link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] documentation:
 
 +
 [source,yaml]
@@ -91,10 +90,9 @@ spec:
 oc apply -f manifestwork.yaml
 ----
 
-The example will deploy into your managed cluster's `default` namespace. 
+The example deploys to your managed cluster `default` namespace. 
 
-
-You can check the status of the ManifestWork from your multicluster engine for Kubernetes cluster:
+. Run the following command to check the status of the `ManifestWork` from your multicluster engine for Kubernetes cluster:
 
 
 ----
@@ -110,7 +108,7 @@ You can view the results on your managed cluster.
 oc login
 ----
 
-. View the deployment created via your multicluster engine for Kubernetes cluster:
+. View the deployment that you created with your multicluster engine for Kubernetes cluster:
 
 +
 ----
@@ -120,7 +118,7 @@ hello   1/1     1            1           37s
 ----
 
 +
-You can also view the created pod:
+You can also view the created pod with the following command:
 
 +
 ----
@@ -130,7 +128,7 @@ hello-65f58985ff-4rm57   1/1     Running   0          42s
 ----
 
 +
-If you view the logs for the created pod, you should see the expected message:
+If you view the logs for the created pod, you see a message similar to the following:
 
 +
 ----

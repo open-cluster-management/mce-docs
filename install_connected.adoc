@@ -5,7 +5,11 @@ The multicluster engine for Kubernetes operator is installed with Operator Lifec
 
 **Required access:** Cluster administrator
 
-**Important:** For OpenShift Container Platform Dedicated environment, you must have `cluster-admin` permissions. By default `dedicated-admin` role does not have the required permissions to create namespaces in the OpenShift Container Platform Dedicated environment. 
+**Important:** 
+
+- You must install multicluster engine for Kubernetes on a cluster that does not have Red Hat Advanced Cluster Management for Kubernetes installed. The multicluster engine for Kubernetes cannot co-exist with Red Hat Advanced Cluster Management for Kubernetes because they provide some of the same management components. It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
+
+- For OpenShift Container Platform Dedicated environment, you must have `cluster-admin` permissions. By default `dedicated-admin` role does not have the required permissions to create namespaces in the OpenShift Container Platform Dedicated environment. 
 
 - By default, the engine components are installed on worker nodes of your OpenShift Container Platform cluster without any additional configuration. You can install the engine onto worker nodes by using the OpenShift Container Platform OperatorHub web console interface, or by using the OpenShift Container Platform CLI.
 
@@ -133,12 +137,7 @@ multicluster engine for Kubernetes engine to build and start.
 
 +
 After the 
-multicluster engine for Kubernetes engine is created, the status for the operator is _Running_ on the _Installed Operators_ page. You can now access the console for the 
-multicluster engine for Kubernetes engine. See the following steps:
-
- . In the OpenShift Container Platform console navigation, select *Networking* > *Routes*.
- . View the URL for your 
-multicluster engine for Kubernetes engine in the list, and navigate to it to access the console.
+multicluster engine for Kubernetes engine is created, the status for the operator is _Running_ on the _Installed Operators_ page.
 
 [#installing-from-the-cli]
 == Installing from the OpenShift Container Platform CLI

@@ -6,15 +6,16 @@ Before you install the multicluster engine for Kubernetes operator 1.0, review t
 * <<supported-operating-systems-and-platforms,Supported operating systems and platforms>>
 * <<network-configuration,Network configuration>>
 
-*Note:* There is no console for the Technical Preview version of this product.
+*Important:* You must install multicluster engine for Kubernetes on a cluster that does not have Red Hat Advanced Cluster Management for Kubernetes installed. The multicluster engine for Kubernetes cannot co-exist with Red Hat Advanced Cluster Management for Kubernetes because they provide some of the same management components. It is recommended that you install multicluster engine for Kubernetes on a cluster that has never previously installed Red Hat Advanced Cluster Management.
+
 
 [#supported-operating-systems-and-platforms]
-== Supported operating systems and platforms for hub clusters and managed clusters
+== Supported operating systems and platforms for multicluster engine for Kubernetes clusters and managed clusters
 
 See the following table for supported operating systems:
 
 |===
-| Platform | Supported for hub cluster| Supported for managed cluster
+| Platform | Supported for multicluster engine for Kubernetes cluster| Supported for managed cluster
 | Red Hat OpenShift Container Platform 3.11.200, and later 3.11.x releases| No | Yes
 | Red Hat OpenShift Container Platform 4.8.2, and later| Yes | Yes
 | Red Hat OpenShift Container Platform on Amazon Web Services| Yes | Yes
@@ -33,10 +34,10 @@ Configure your network settings to allow the connections in the following sectio
 
 //Do we have anything here for this section
 
-[#network-configuration-hub]
-=== Hub cluster networking requirements
+[#network-configuration-engine]
+=== The multicluster engine for Kubernetes operator cluster networking requirements
 
-For the hub cluster networking requirements, see the following table:
+For the multicluster engine for Kubernetes cluster networking requirements, see the following table:
 
 |===
 | Direction | Connection | Port (if specified)
@@ -49,20 +50,16 @@ For the hub cluster networking requirements, see the following table:
 | Kubernetes API server of the provisioned managed cluster
 | 6443
 
-| Outbound
-| The channel source, including GitHub, Object Store, and Helm repository. This is only required when you are using Application lifecycle to connect to these sources.
-| 
-
 | Outbound and inbound
 | The `WorkManager` service route on the managed cluster
 | 443
 
 | Inbound
-| The kube API server of the hub cluster from the managed cluster
+| The Kubernetes API server of the multicluster engine for Kubernetes cluster from the managed cluster
 | 6443
 
 | Inbound
-| Post-commit hook from GitHub to the hub cluster. This setting is only required when you use certain application management functions.
+| Post-commit hook from GitHub to the multicluster engine for Kubernetes cluster. This setting is only required when you use certain application management functions.
 | 6443
 
 |===
@@ -76,13 +73,8 @@ For the managed cluster networking requirements, see the following table:
 | Direction | Connection | Port (if specified)
 
 | Outbound and inbound
-| Kubernetes API server of the hub cluster
+| Kubernetes API server of the multicluster engine for Kubernetes cluster
 | 6443
 
-| Outbound
-| The managed cluster to the channel source, which includes GitHub, Object Store, and Helm repository. This is only required when you are using application lifecycle to connect to these sources.
-
 |===
-
-
 

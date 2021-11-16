@@ -67,3 +67,5 @@ IMAGE=$REGISTRY/multicluster-engine/must-gather-rhel8@sha256:ff9f37eb400dc1f7d07
 
 oc adm must-gather --image=$IMAGE --dest-dir=./data
 ----
+
+You can open a bug for the product team https://bugzilla.redhat.com/[here].

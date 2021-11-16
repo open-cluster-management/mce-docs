@@ -190,11 +190,11 @@ oc apply -f <path-to-file>/<operator-group>.yaml
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: mce-operator-subscription
+  name: multicluster-engine
 spec:
   sourceNamespace: openshift-marketplace
   source: redhat-operators
-  channel: release-1.0
+  channel: stable-1.0
   installPlanApproval: Automatic
   name: multicluster-engine
 ----
@@ -216,7 +216,7 @@ oc apply -f <path-to-file>/<subscription>.yaml
 +
 [source,yaml]
 ----
-apiVersion: operator.multicluster-engine.io/v1
+apiVersion: multicluster.openshift.io/v1alpha1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine

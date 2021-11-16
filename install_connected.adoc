@@ -136,7 +136,7 @@ spec: {}
 multicluster engine for Kubernetes engine to build and start.
 
 +
-After the _MultiClusterEngine_ resource is created, the status for the resource is _Available_ on the _MultiCluster Engine_ tab.
+After the _MultiClusterEngine_ resource is created, the status for the resource is `Available` on the _MultiCluster Engine_ tab.
 
 [#installing-from-the-cli]
 == Installing from the OpenShift Container Platform CLI

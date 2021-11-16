@@ -115,7 +115,7 @@ multicluster engine for Kubernetes.
 
 . Create the _MultiClusterEngine_ custom resource.
  .. In the OpenShift Container Platform console navigation, select *Installed Operators* > *multicluster engine for Kubernetes*.
- .. Select the *Multiclusterengine* tab.
+ .. Select the *MultiCluster Engine* tab.
  .. Select *Create MultiClusterEngine*.
  .. Update the default values in the YAML file. See options in the _MultiClusterEngine advanced configuration_ section of the documentation.
  
@@ -137,7 +137,7 @@ multicluster engine for Kubernetes engine to build and start.
 
 +
 After the 
-multicluster engine for Kubernetes engine is created, the status for the operator is _Running_ on the _Installed Operators_ page.
+multicluster engine for Kubernetes engine is created, the status for the operator is _Available_ on the _Installed Operators_ page.
 
 [#installing-from-the-cli]
 == Installing from the OpenShift Container Platform CLI

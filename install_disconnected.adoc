@@ -31,7 +31,7 @@ See the https://access.redhat.com/documentation/en-us/openshift_container_platfo
 [#confirm-ocp-installation-2]
 == Confirm your OpenShift Container Platform installation
 
-* You must have a supported OpenShift Container Platform version, including the registry and storage services, installed and working in your cluster. For information about OpenShift Container Platform version 4.8, see https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/[OpenShift Container Platform Documentation].
+* You must have a supported OpenShift Container Platform version, including the registry and storage services, installed and working in your cluster. For information about OpenShift Container Platform version 4.8, see https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/[OpenShift Container Platform documentation].
 
 * When and if you are connected, you can ensure that the OpenShift Container Platform cluster is set up correctly. Access the OpenShift Container Platform web console.
 
@@ -133,7 +133,7 @@ oc apply -f mce-policy.yaml
 +
 the multicluster engine for Kubernetes operator is included in the  Operator Lifecycle Manager Red Hat Operator catalog.
 
-. Configure the disconnected  Operator Lifecycle Manager for the Red Hat Operator catalog. Follow the steps in the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/operators/administrator-tasks# Operator Lifecycle Manager-restricted-networks[Using Operator Lifecycle Manager on restricted networks] topic of the Red Hat OpenShift Container Platform documentation.
+. Configure the disconnected Operator Lifecycle Manager for the Red Hat Operator catalog. Follow the steps in the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/operators/administrator-tasks-restricted-networks[Using Operator Lifecycle Manager on restricted networks] topic of the Red Hat OpenShift Container Platform documentation.
 
 . Now that you have the image in the disconnected  Operator Lifecycle Manager, continue to install the multicluster engine for Kubernetes operator for Kubernetes from the  Operator Lifecycle Manager catalog.
 

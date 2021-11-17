@@ -22,13 +22,6 @@ Cannot delete MultiClusterEngine resource because ManagedCluster resource(s) exi
 +
 For more information about detaching clusters, see the _Removing a cluster from management_ section by selecting the information for your provider in xref:./cluster_create_cli.adoc#creating-a-cluster[Creating a cluster]. 
 
-* If you have Bare metal assets, you might see the following:
-
-+ 
-----
-Cannot delete MultiClusterEngine resource because BareMetalAssets resource(s) exist
-----
-
 [#removing-a-multiclusterengine-instance-by-using-commands]
 == Removing resources by using commands
 
@@ -51,7 +44,6 @@ You can view the progress by entering the following command:
 ----
 oc get multiclusterengine -o yaml
 ----
-
 
 . Enter the following commands to delete the multicluster-engine `ClusterServiceVersion` in the namespace it is installed in:
 ----

@@ -22,7 +22,7 @@ See the following procedure to import from the CLI:
 +
 *Note:* Download the installation file for CLI tools from the  OpenShift Container Platform console.
 
-* If you are importing a cluster that was not created by OpenShift Container Platform, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when multicluster engine for Kubernetes was installed. See link:./adv_config_install.adoc#advanced-config-engine[Advanced configuration] for more information about defining the secret. 
+* If you are importing a cluster that was not created by OpenShift Container Platform, you need a `multiclusterengine.spec.imagePullSecret` defined. This secret might have been created when multicluster engine for Kubernetes was installed. See xref:./adv_config_install.adoc#advanced-config-engine[Advanced configuration] for more information about defining the secret. 
 
 [#prepare-for-import]
 == Prepare for import

@@ -18,7 +18,7 @@ After you have installed, you are ready to create, import, and manage clusters. 
 . See link:./cluster
 _create_cli.adoc#create-a-cluster[Create a cluster] to learn about the types of managed clusters you can create.
 
-. If you have a cluster that you want to import manually, view link:./import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] to learn how to import a managed cluster.
+. If you have a cluster that you want to import manually, view link:./import_cli.adoc#importing-a-cluster[Importing a cluster] to learn how to import a managed cluster.
 
 . You can view link:./import_cli.adoc#detaching-managed-cluster[Detaching a managed cluster] when you no longer need to manage a cluster.
 

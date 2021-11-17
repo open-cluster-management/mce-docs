@@ -200,7 +200,7 @@ spec:
 
 +
 *Note:* For installing the 
-multicluster engine for Kubernetes engine on infrastructure nodes, the see xref:./install_connected.adoc#infra-olm-sub-add-config[ Operator Lifecycle Manager Subscription additional configuration] section.
+multicluster engine for Kubernetes engine on infrastructure nodes, the see xref:./install_connected.adoc#infra-olm-sub-add-config[Operator Lifecycle Manager Subscription additional configuration] section.
 
 +
 . Run the following command to create the OpenShift Container Platform Subscription. Replace `subscription` with the name of the subscription file that you created:

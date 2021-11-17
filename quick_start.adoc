@@ -34,7 +34,7 @@ You can deploy workloads onto your managed clusters from your multicluster engin
 oc login
 ----
 
-. Create a YAML file to configure the `ManifestWork` resource as it is in the following example. Replace `CLUSTER_NAME` with the name of the managed cluster that you imported from the link:../import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] documentation. The example YAML deploys to your managed cluster `default` namespace when you apply the file:
+. Create a YAML file to configure the `ManifestWork` resource as it is in the following example. Replace `CLUSTER_NAME` with the name of the managed cluster that you imported from the link:./import_cli.adoc#importing-a-target-managed-cluster-to-the-hub-cluster[Importing a managed cluster with the CLI] documentation. The example YAML deploys to your managed cluster `default` namespace when you apply the file:
 
 +
 [source,yaml]

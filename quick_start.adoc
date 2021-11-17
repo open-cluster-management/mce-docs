@@ -15,7 +15,7 @@ Before you install multicluster engine for Kubernetes, review the system configu
 
 After you have installed, you are ready to create, import, and manage clusters. From your multicluster engine for Kubernetes cluster, you can create other Openshift Container Platform clusters to manage.
 
-. See xref:./cluster_create_cli.adoc#create-a-cluster[Create a cluster] to learn about the types of managed clusters you can create.
+. See xref:./cluster_create_cli.adoc#create-a-cluster[Creating a cluster] to learn about the types of managed clusters you can create.
 
 . If you have a cluster that you want to import manually, view xref:./import_cli.adoc#importing-a-cluster[Importing a cluster] to learn how to import a managed cluster.
 

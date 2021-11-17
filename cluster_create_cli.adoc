@@ -1,5 +1,5 @@
 [#create-a-cluster]
-= Create a cluster
+= Creating a cluster
 
 The multicluster engine for Kubernetes uses internal Hive components to create Red Hat OpenShift Container Platform clusters. See the following information to learn how to create clusters.
 

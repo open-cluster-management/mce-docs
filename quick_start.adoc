@@ -8,14 +8,14 @@
 [#introduction]
 == Introduction
 
-Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at link:./requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with link:./install_connected.adoc#installing-while-connected-online[Installing while connected online]. 
+Before you install multicluster engine for Kubernetes, review the system configuration requirements and settings at xref:./requirements.adoc#requirements-and-recommendations[Requirements and recommendations]. With a supported version of OpenShift Container Platform installed and running on your cluster, you can proceed with xref:./install_connected.adoc#installing-while-connected-online[Installing while connected online]. 
 
 [#create-and-manage-clusters]
 == Create and manage clusters
 
 After you have installed, you are ready to create, import, and manage clusters. From your multicluster engine for Kubernetes cluster, you can create other Openshift Container Platform clusters to manage.
 
-. See link:./cluster_create_cli.adoc#create-a-cluster[Create a cluster] to learn about the types of managed clusters you can create.
+. See xref:./cluster_create_cli.adoc#create-a-cluster[Create a cluster] to learn about the types of managed clusters you can create.
 
 . If you have a cluster that you want to import manually, view xref:./import_cli.adoc#importing-a-cluster[Importing a cluster] to learn how to import a managed cluster.
 
@@ -33,7 +33,7 @@ You can deploy workloads onto your managed clusters from your multicluster engin
 oc login
 ----
 
-. Create a YAML file to configure the `ManifestWork` resource as it is in the following example. Replace `CLUSTER_NAME` with the name of the managed cluster that you imported from the link:./import_cli.adoc#importing-a-cluster[Importing a cluster] documentation. The example YAML deploys to your managed cluster `default` namespace when you apply the file:
+. Create a YAML file to configure the `ManifestWork` resource as it is in the following example. Replace `CLUSTER_NAME` with the name of the managed cluster that you imported from the xref:./import_cli.adoc#importing-a-cluster[Importing a cluster] documentation. The example YAML deploys to your managed cluster `default` namespace when you apply the file:
 
 +
 [source,yaml]

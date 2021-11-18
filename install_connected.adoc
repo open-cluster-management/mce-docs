@@ -34,8 +34,9 @@ Before you install multicluster engine for Kubernetes, see the following require
 
 * You need access to the https://catalog.redhat.com/software/containers/search?p=1&application_categories_list=Container%20Platform%20%2F%20Management[catalog.redhat.com].
 
-* OpenShift Container Platform version 4.6, or later, must be deployed in your environment, and you must be logged into with the OpenShift Container Platform CLI. OpenShift Container Platform version 4.6, or later, must be deployed in your environment, and you must be logged into with the OpenShift Container Platform CLI. See the following install documentation for OpenShift Container Platform: 
+* OpenShift Container Platform version 4.6, or later, must be deployed in your environment, and you must be logged into with the OpenShift Container Platform CLI. OpenShift Container Platform version 4.6, or later, must be deployed in your environment, and you must be logged into with the OpenShift Container Platform CLI. See the following install documentation for OpenShift Container Platform:
 
+  - https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/installing/index[OpenShift Container Platform version 4.9]
   - https://access.redhat.com/documentation/en-us/openshift_container_platform/4.8/html/installing/index[OpenShift Container Platform version 4.8]
   - https://access.redhat.com/documentation/en-us/openshift_container_platform/4.7/html/installing/index[OpenShift Container Platform version 4.7]
   - https://docs.openshift.com/container-platform/4.6/welcome/index.html[OpenShift Container Platform version 4.6] 
@@ -87,7 +88,9 @@ multicluster engine for Kubernetes.
 
 . Select *Operators* > *OperatorHub* to access the list of available operators, and select _multicluster engine for Kubernetes_ operator.
 
-. On the _Operator subscription_ page, select the options for your installation:
+. Click `Install`.
+
+. On the _Operator Installation_ page, select the options for your installation:
 
 +
 * Namespace: 
@@ -104,7 +107,7 @@ multicluster engine for Kubernetes.
 +
 * Approval strategy: The approval strategy identifies the human interaction that is required for applying updates to the channel or release to which you subscribed. 
 
-  - Select *Automatic* to ensure any updates within that release are automatically applied. 
+  - Select *Automatic*, which is selected by default, to ensure any updates within that release are automatically applied. 
   
   - Select *Manual* to receive a notification when an update is available. If you have concerns about when the updates are applied, this might be best practice for you.
 
@@ -113,18 +116,18 @@ multicluster engine for Kubernetes.
 
 . Select *Install* to apply your changes and create the operator. 
 
-. Create the _MultiClusterEngine_ custom resource.
+. See the following process to create the _MultiClusterEngine_ custom resource.
  .. In the OpenShift Container Platform console navigation, select *Installed Operators* > *multicluster engine for Kubernetes*.
  .. Select the *MultiCluster Engine* tab.
  .. Select *Create MultiClusterEngine*.
  .. Update the default values in the YAML file. See options in the _MultiClusterEngine advanced configuration_ section of the documentation.
- 
-* The following example shows the default template.
+
+* The following example shows the default template that you can copy into the editor:
 
 +
 [source,yaml]
 ----
-apiVersion: operator.multicluster-engine.io/v1
+apiVersion: multicluster.openshift.io/v1alpha1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine
@@ -257,7 +260,7 @@ multicluster engine for Kubernetes and to any user credentials with access to th
 multicluster engine for Kubernetes.
 
 [#installing-on-infra-node]
-== Installing the on infrastructure nodes
+== Installing on infrastructure nodes
 
 An OpenShift Container Platform cluster can be configured to contain infrastructure nodes for running approved management components. Running components on infrastructure nodes avoids allocating OpenShift Container Platform subscription quota for the nodes that are running those management components.
 
@@ -286,7 +289,7 @@ spec:
 [#infra-olm-sub-add-config]
 ===  Operator Lifecycle Manager Subscription additional configuration
 
-Add the following additional configuration before applying the  Operator Lifecycle Manager Subscription:
+Add the following additional configuration before applying the Operator Lifecycle Manager Subscription:
 
 [source,yaml]
 ----

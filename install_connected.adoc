@@ -87,7 +87,9 @@ multicluster engine for Kubernetes.
 
 . Select *Operators* > *OperatorHub* to access the list of available operators, and select _multicluster engine for Kubernetes_ operator.
 
-. On the _Operator subscription_ page, select the options for your installation:
+. Click `Install`.
+
+. On the _Operator Installation_ page, select the options for your installation:
 
 +
 * Namespace: 
@@ -104,7 +106,7 @@ multicluster engine for Kubernetes.
 +
 * Approval strategy: The approval strategy identifies the human interaction that is required for applying updates to the channel or release to which you subscribed. 
 
-  - Select *Automatic* to ensure any updates within that release are automatically applied. 
+  - Select *Automatic*, which is selected by default, to ensure any updates within that release are automatically applied. 
   
   - Select *Manual* to receive a notification when an update is available. If you have concerns about when the updates are applied, this might be best practice for you.
 
@@ -113,18 +115,18 @@ multicluster engine for Kubernetes.
 
 . Select *Install* to apply your changes and create the operator. 
 
-. Create the _MultiClusterEngine_ custom resource.
+. See the following process to create the _MultiClusterEngine_ custom resource.
  .. In the OpenShift Container Platform console navigation, select *Installed Operators* > *multicluster engine for Kubernetes*.
  .. Select the *MultiCluster Engine* tab.
  .. Select *Create MultiClusterEngine*.
  .. Update the default values in the YAML file. See options in the _MultiClusterEngine advanced configuration_ section of the documentation.
- 
-* The following example shows the default template.
+
+* The following example shows the default template that you can copy into the editor:
 
 +
 [source,yaml]
 ----
-apiVersion: operator.multicluster-engine.io/v1
+apiVersion: multicluster.openshift.io/v1alpha1
 kind: MultiClusterEngine
 metadata:
   name: multiclusterengine

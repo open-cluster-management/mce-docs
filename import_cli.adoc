@@ -33,13 +33,19 @@ See the following procedure to import from the CLI:
 oc login
 ----
 
-. Run the following command on the engine cluster to create the namespace: 
+. Run the following command on the engine cluster to create the project: 
 +
 *Note:* The cluster name that is defined in `CLUSTER_NAME` and is also used as the cluster namespace in the `.yaml` file and commands:
 
 +
 ----
 oc new-project ${CLUSTER_NAME}
+----
+
+. Run the following command to create the namespace:
+
++
+----
 oc label namespace ${CLUSTER_NAME} cluster.open-cluster-management.io/managedCluster=${CLUSTER_NAME}
 ----
 

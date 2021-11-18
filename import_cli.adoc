@@ -73,9 +73,9 @@ oc apply -f managed-cluster.yaml
 
 Proceed with the following steps while still logged in to your engine cluster:
 
-. Retrieve the `kubeconfig` file of the cluster that you are importing. See the documenation for your Kubernetes cluster to learn where to locate your `kubeconfig` file.
+. Retrieve the `kubeconfig` file of the cluster that you are importing. See the documentation for your Kubernetes cluster to learn where to locate your `kubeconfig` file.
 
-. Generate the import secret in the `${CLUSTER_NAME}` namespace using the `kubeconfig` file of the cluster you are importing. Run the following command:
+. Generate the import secret in the `${CLUSTER_NAME}` namespace using the `kubeconfig` file of the cluster you are importing. Run the following command with your path to your `kubeconfig` and `CLUSTER_NAM`E:
 
 +
 ----
@@ -112,7 +112,7 @@ oc get pod -n open-cluster-management-agent
 
 +
 ----
-kubectl get pod -n open-cluster-management-agent-addon
+oc get pod -n open-cluster-management-agent-addon
 ----
 
 Your cluster is now imported.

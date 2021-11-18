@@ -259,7 +259,7 @@ multicluster engine for Kubernetes and to any user credentials with access to th
 multicluster engine for Kubernetes.
 
 [#installing-on-infra-node]
-== Installing the on infrastructure nodes
+== Installing on infrastructure nodes
 
 An OpenShift Container Platform cluster can be configured to contain infrastructure nodes for running approved management components. Running components on infrastructure nodes avoids allocating OpenShift Container Platform subscription quota for the nodes that are running those management components.
 
@@ -288,7 +288,7 @@ spec:
 [#infra-olm-sub-add-config]
 ===  Operator Lifecycle Manager Subscription additional configuration
 
-Add the following additional configuration before applying the  Operator Lifecycle Manager Subscription:
+Add the following additional configuration before applying the Operator Lifecycle Manager Subscription:
 
 [source,yaml]
 ----

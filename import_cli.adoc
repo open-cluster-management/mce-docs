@@ -73,7 +73,7 @@ oc apply -f managed-cluster.yaml
 
 Proceed with the following steps while still logged in to your engine cluster:
 
-. Retrieve the `kubeconfig` file of the cluster that you are importing or the kube api server and token of the cluster that you are importing. See the documentation for your Kubernetes cluster to learn where to locate your `kubeconfig` file or your kube api server and token
+. Retrieve the `kubeconfig` file of the cluster that you are importing or the kube API server and token of the cluster that you are importing. See the documentation for your Kubernetes cluster to learn where to locate your `kubeconfig` file or your kube api server and token
 
 . Use your `kubeconfig` or your server/token pair to create a YAML file that contains content that is similar to the following template:
 
